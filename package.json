@@ -1,0 +1,40 @@
+{
+  "name": "@lithiumjs/ngx-material-theming",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
+  "author": "Mychal Thompson <mychalrthompson@gmail.com>",
+  "bin": {
+    "ltc": "node ./bin/ltc.js"
+  },
+  "scripts": {
+    "build:js": "node ./scripts/build.js"
+  },
+  "peerDependencies": {
+    "@angular/common": "6.x.x - 7.x.x",
+    "@angular/core": "6.x.x - 7.x.x",
+    "@angular/material": "6.x.x - 7.x.x",
+    "@lithiumjs/angular": ">=2.0.0",
+    "chroma-js": "^1.4.0",
+    "rxjs": "6.x.x"
+  },
+  "devDependencies": {
+    "@angular/common": "7.0.4",
+    "@angular/compiler": "7.0.4",
+    "@angular/compiler-cli": "7.0.4",
+    "@angular/core": "7.0.4",
+    "@angular/material": "7.0.4",
+    "@lithiumjs/angular": "^2.2.0-rc.0",
+    "@types/chroma-js": "^1.4.0",
+    "@types/node": "^10.12.9",
+    "chroma-js": "^1.4.0",
+    "fs-extra": "^7.0.1",
+    "node-sass": "^4.10.0",
+    "rxjs": "~6.2.0",
+    "typescript": "~3.1.1",
+    "zone.js": "0.8.26"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,9 @@
+build/
+dist/
+gen/
+node_modules/
+coverage/*
+!coverage/coverage.svg
+
+*.log
+*.ignore

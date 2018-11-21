@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "stripInternal": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "outDir": "./dist",
+        "sourceMap": true,
+        "lib": [
+            "es2018",
+            "dom"
+        ]
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "typeRoots": [
+        "node_modules/@types"
+    ],
+    "atom": {
+        "rewriteTsConfig": false
+    },
+    "angularCompilerOptions": {
+        "skipTemplateCodegen": true
+    }
+}

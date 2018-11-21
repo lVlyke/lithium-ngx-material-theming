@@ -1,0 +1,35 @@
+@mixin app-declare-theme($theme-name) {
+    $selector: li-theme-container;
+
+    #{$selector}, * {
+        #{$selector} {
+            &[theme="#{$theme-name}"]:not([disabled="true"]) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin app-theme(
+    $theme-name,
+    $theme-primary,
+    $theme-accent,
+    $theme-warn,
+    $is-dark: false
+) {
+    @include app-declare-theme($theme-name) {
+        @if $is-dark {
+            @include angular-material-theme(mat-dark-theme(
+                $theme-primary,
+                $theme-accent,
+                $theme-warn
+            ));
+        } @else {
+            @include angular-material-theme(mat-light-theme(
+                $theme-primary,
+                $theme-accent,
+                $theme-warn
+            ));
+        }
+    }
+}
