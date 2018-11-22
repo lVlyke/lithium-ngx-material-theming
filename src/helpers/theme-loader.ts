@@ -8,6 +8,9 @@ export class ThemeLoader {
     private static readonly PRIMARY_COLOR_MATCHER = /%primary-color-(\d+)%/g;
     private static readonly ACCENT_COLOR_MATCHER = /%accent-color-(\d+)%/g;
     private static readonly WARN_COLOR_MATCHER = /%warn-color-(\d+)%/g;
+    private static readonly PRIMARY_FONT_COLOR_MATCHER = /%primary-font-color-(\d+)%/g;
+    private static readonly ACCENT_FONT_COLOR_MATCHER = /%accent-font-color-(\d+)%/g;
+    private static readonly WARN_FONT_COLOR_MATCHER = /%warn-font-color-(\d+)%/g;
 
     public static loadCompiled(compiledThemeData: string): void {
         const element = document.createElement("style");
@@ -25,6 +28,10 @@ export class ThemeLoader {
         themeData = themeData.replace(this.ACCENT_COLOR_MATCHER, (_match, $1) => this.computeColor(accentColor, Number.parseInt($1)));
         themeData = themeData.replace(this.WARN_COLOR_MATCHER, (_match, $1) => this.computeColor(warnColor, Number.parseInt($1)));
 
+        themeData = themeData.replace(this.PRIMARY_FONT_COLOR_MATCHER, (_match, $1) => this.computeFontColor(primaryColor, Number.parseInt($1)));
+        themeData = themeData.replace(this.ACCENT_FONT_COLOR_MATCHER, (_match, $1) => this.computeFontColor(accentColor, Number.parseInt($1)));
+        themeData = themeData.replace(this.WARN_FONT_COLOR_MATCHER, (_match, $1) => this.computeFontColor(warnColor, Number.parseInt($1)));
+
         this.loadCompiled(themeData);
     }
 
@@ -33,6 +40,14 @@ export class ThemeLoader {
             return chroma(baseColor).brighten((500 - paletteOffset) / 1000).hex();
         } else {
             return chroma(baseColor).darken((paletteOffset - 500) / 1000).hex();
+        }
+    }
+
+    private static computeFontColor(baseColor: string, paletteOffset: number): string {
+        if (chroma(this.computeColor(baseColor, paletteOffset)).luminance() < 0.5) {
+            return "white";
+        } else {
+            return "black";
         }
     }
 }

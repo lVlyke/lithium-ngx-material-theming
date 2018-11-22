@@ -149,15 +149,15 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
         color: rgba(0, 0, 0, 0.87); }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-content, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-content {
-    color: white;
+    color: %primary-font-color-500%;
     background: %primary-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-accent .mat-badge-content, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-accent .mat-badge-content {
     background: %accent-color-500%;
-    color: white; }
+    color: %accent-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-warn .mat-badge-content, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge-warn .mat-badge-content {
-    color: white;
+    color: %warn-font-color-500%;
     background: %warn-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-badge {
@@ -352,11 +352,11 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     color: rgba(0, 0, 0, 0.87);
     background-color: white; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary {
-      color: white; }
+      color: %primary-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-accent, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-accent, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-accent, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-accent {
-      color: white; }
+      color: %accent-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-warn, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-warn, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-warn, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-warn {
-      color: white; }
+      color: %warn-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-accent[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-warn[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button[disabled][disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-accent[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-warn[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button[disabled][disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-accent[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-warn[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab[disabled][disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-accent[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-warn[disabled], li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab[disabled][disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-accent[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-warn[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button[disabled][disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-accent[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-warn[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button[disabled][disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-accent[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-warn[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab[disabled][disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-accent[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-warn[disabled], * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab[disabled][disabled] {
       color: rgba(0, 0, 0, 0.26); }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-flat-button.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-raised-button.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-fab.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-mini-fab.mat-primary {
@@ -521,9 +521,9 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
     background-color: %primary-color-500%;
-    color: white; }
+    color: %primary-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove {
-      color: white;
+      color: %primary-font-color-500%;
       opacity: 0.4; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove:hover, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove:hover {
       opacity: 0.54; }
@@ -532,9 +532,9 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn {
     background-color: %warn-color-500%;
-    color: white; }
+    color: %warn-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-chip-remove, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-chip-remove {
-      color: white;
+      color: %warn-font-color-500%;
       opacity: 0.4; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-chip-remove:hover, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-chip-remove:hover {
       opacity: 0.54; }
@@ -543,9 +543,9 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent {
     background-color: %accent-color-500%;
-    color: white; }
+    color: %accent-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove {
-      color: white;
+      color: %accent-font-color-500%;
       opacity: 0.4; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove:hover, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove:hover {
       opacity: 0.54; }
@@ -616,7 +616,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-calendar-body-selected {
     background-color: %primary-color-500%;
-    color: white; }
+    color: %primary-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-calendar-body-disabled > .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-calendar-body-disabled > .mat-calendar-body-selected {
     background-color: rgba(63, 81, 181, 0.4); }
@@ -630,14 +630,14 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     color: rgba(0, 0, 0, 0.87); }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
       background-color: %accent-color-500%;
-      color: white; }
+      color: %accent-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-disabled > .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-disabled > .mat-calendar-body-selected {
       background-color: rgba(233, 30, 99, 0.4); }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-today.mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-accent .mat-calendar-body-today.mat-calendar-body-selected {
       box-shadow: inset 0 0 0 1px white; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-selected {
       background-color: %warn-color-500%;
-      color: white; }
+      color: %warn-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-disabled > .mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-disabled > .mat-calendar-body-selected {
       background-color: rgba(244, 67, 54, 0.4); }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-today.mat-calendar-body-selected, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-datepicker-content.mat-warn .mat-calendar-body-today.mat-calendar-body-selected {
@@ -1117,7 +1117,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %primary-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-primary .mat-slider-thumb-label-text, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-primary .mat-slider-thumb-label-text {
-    color: white; }
+    color: %primary-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-accent .mat-slider-track-fill,
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-accent .mat-slider-thumb,
@@ -1127,7 +1127,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %accent-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-accent .mat-slider-thumb-label-text, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-accent .mat-slider-thumb-label-text {
-    color: white; }
+    color: %accent-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-warn .mat-slider-track-fill,
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-warn .mat-slider-thumb,
@@ -1137,7 +1137,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %warn-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-warn .mat-slider-thumb-label-text, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-warn .mat-slider-thumb-label-text {
-    color: white; }
+    color: %warn-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-slider-focus-ring, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-slider-focus-ring {
     background-color: rgba(233, 30, 99, 0.2); }
@@ -1208,7 +1208,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
   * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-step-header .mat-step-icon-state-done,
   * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-step-header .mat-step-icon-state-edit {
     background-color: %primary-color-500%;
-    color: white; }
+    color: %primary-font-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-step-header .mat-step-icon-state-error, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-step-header .mat-step-icon-state-error {
     background-color: transparent;
@@ -1330,7 +1330,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %primary-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-link, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-link {
-    color: white; }
+    color: %primary-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled {
       color: rgba(255, 255, 255, 0.4); }
   
@@ -1358,7 +1358,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %accent-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-link, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-link {
-    color: white; }
+    color: %accent-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {
       color: rgba(255, 255, 255, 0.4); }
   
@@ -1386,7 +1386,7 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     background-color: %warn-color-500%; }
   
   li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-link, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-label, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-link, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-label, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-link {
-    color: white; }
+    color: %warn-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-link.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-label.mat-tab-disabled, li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-group.mat-background-warn .mat-tab-link.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-label.mat-tab-disabled, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-tab-nav-bar.mat-background-warn .mat-tab-link.mat-tab-disabled {
       color: rgba(255, 255, 255, 0.4); }
   
@@ -1404,13 +1404,13 @@ li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"])
     color: rgba(0, 0, 0, 0.87); }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-primary, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-primary {
       background: %primary-color-500%;
-      color: white; }
+      color: %primary-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-accent, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-accent {
       background: %accent-color-500%;
-      color: white; }
+      color: %accent-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-warn, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar.mat-warn {
       background: %warn-color-500%;
-      color: white; }
+      color: %warn-font-color-500%; }
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar .mat-form-field-underline,
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar .mat-form-field-ripple,
     li-theme-container li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar .mat-focused .mat-form-field-ripple, * li-theme-container[theme=%theme-name%]:not([disabled="true"]) .mat-toolbar .mat-form-field-underline,
