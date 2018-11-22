@@ -2,13 +2,15 @@ import { Directive, HostBinding, Input } from "@angular/core";
 import { StateEmitter, AotAware } from "@lithiumjs/angular";
 import { Subject } from "rxjs";
 
+export const DEFAULT_THEME_NAME = "default";
+
 @Directive({
     selector: "li-theme-container"
 })
 export class ThemeContainer extends AotAware {
 
     @Input("theme")
-    @StateEmitter({ initialValue: "default" })
+    @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
     public readonly theme$: Subject<string>;
 
     @Input("disabled")
