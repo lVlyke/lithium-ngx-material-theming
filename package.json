@@ -7,7 +7,7 @@
   "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
   "author": "Mychal Thompson <mychalrthompson@gmail.com>",
   "bin": {
-    "ltc": "node ./bin/ltc.js"
+    "ltc": "./bin/ltc.js"
   },
   "scripts": {
     "build:js": "node ./scripts/build.js"
