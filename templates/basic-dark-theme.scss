@@ -1,0 +1,6 @@
+@import "~@angular/material/theming";
+@import "src/styles/theme";
+
+$theme-name: "default";
+
+@include app-theme($theme-name, mat-palette($mat-indigo), mat-palette($mat-pink), mat-palette($mat-red), true);
