@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@angular/cdk@7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-7.0.4.tgz#422c2aec599f0cce0f8ce9ae6656be5b8109a4d0"
+  integrity sha512-4KbuiVLonwNwzwgJqKOvjqXfXKrdboPzFwk4vGruQV/EhGh6L8V4gy+ESS4seUuYYsMA9k+ijEeO9xUX+pAcZw==
+  dependencies:
+    tslib "^1.7.1"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/common@7.0.4":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-7.0.4.tgz#aafb26ce59c967daa5b122393e1933208a247f72"
@@ -1759,6 +1768,11 @@ parse-json@^2.2.0:
   integrity sha1-9ID0BDTvgHQfhGkJn43qGPVaTck=
   dependencies:
     error-ex "^1.2.0"
+
+parse5@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.0.tgz#c59341c9723f414c452975564c7c00a68d58acd2"
+  integrity sha512-fxNG2sQjHvlVAYmzBZS9YlDp6PTSSDwa98vkD4QgVDDCAo84z5X1t5XyJQ62ImdLXx5NdIIfihey6xpum9/gRQ==
 
 pascalcase@^0.1.1:
   version "0.1.1"

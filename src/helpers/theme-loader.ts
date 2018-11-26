@@ -14,13 +14,22 @@ export class ThemeLoader {
     private static readonly ACCENT_FONT_COLOR_MATCHER = /%accent-font-color-(\d+)%/g;
     private static readonly WARN_FONT_COLOR_MATCHER = /%warn-font-color-(\d+)%/g;
 
+    private static readonly THEME_NAME_PARSER = /li-theme-container\[theme=([^\]\s]+)\]/;
+
     /**
      * @description Loads the given compiled theme in for use.
      * @param compiledThemeData The pre-compiled theme data.
     */
-    public static loadCompiled(compiledThemeData: string): void {
+    public static loadCompiled(compiledThemeData: string, labelElement?: boolean): void {
         const element = document.createElement("style");
         element.type = "text/css";
+
+        if (labelElement === undefined ? true : labelElement) {
+            const nameParse = this.THEME_NAME_PARSER.exec(compiledThemeData);
+            if (nameParse.length > 1) {
+                element.setAttribute("data-theme-name", nameParse[1]);
+            }
+        }
 
         element.innerHTML = compiledThemeData;
         document.getElementsByTagName("head")[0].appendChild(element);
