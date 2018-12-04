@@ -19,6 +19,7 @@ export class ThemeLoader {
     /**
      * @description Loads the given compiled theme in for use.
      * @param compiledThemeData The pre-compiled theme data.
+     * @param labelElement [Optional] If `true`, will attach a `data-theme-name` attribute to the `<style>` element set to the theme's name.
     */
     public static loadCompiled(compiledThemeData: string, labelElement?: boolean): void {
         const element = document.createElement("style");
@@ -27,12 +28,24 @@ export class ThemeLoader {
         if (labelElement === undefined ? true : labelElement) {
             const nameParse = this.THEME_NAME_PARSER.exec(compiledThemeData);
             if (nameParse.length > 1) {
-                element.setAttribute("data-theme-name", nameParse[1]);
+                element.setAttribute("data-theme-name", "" + nameParse[1]);
             }
         }
 
         element.innerHTML = compiledThemeData;
-        document.getElementsByTagName("head")[0].appendChild(element);
+
+        this.getHeadElement().appendChild(element);
+    }
+
+    /**
+     * @description Unloads the given compiled theme from the DOM.
+     * @param name The name of the theme to unload.
+    */
+    public static unloadCompiled(name: string): void {
+        const head = this.getHeadElement();
+
+        head.querySelectorAll(`style[data-theme-name=${name}]`)
+            .forEach(style => head.removeChild(style));
     }
 
     /**
@@ -52,7 +65,7 @@ export class ThemeLoader {
         warnPalette: ThemeLoader.Palette,
         isDark?: boolean
     ): string {
-        let themeData: string = isDark ? BASIC_DARK_THEME_TEMPLATE : BASIC_LIGHT_THEME_TEMPLATE;
+        let themeData: string = this.loadThemeData(isDark);
 
         themeData = themeData.replace(this.THEME_NAME_MATCHER, name);
         themeData = themeData.replace(this.PRIMARY_COLOR_MATCHER, (_match, $1) => primaryPalette[this.offset($1)]);
@@ -156,6 +169,21 @@ export class ThemeLoader {
         } else {
             return "black";
         }
+    }
+
+    private static getHeadElement(): HTMLElement {
+        const heads = document.getElementsByTagName("head");
+        if (!heads || heads.length === 0) {
+            const head = document.createElement("head");
+            document.appendChild(head);
+            return head;
+        } else {
+            return heads[0];
+        }
+    }
+
+    private static loadThemeData(isDark: boolean): string {
+        return isDark ? BASIC_DARK_THEME_TEMPLATE : BASIC_LIGHT_THEME_TEMPLATE;
     }
 
     /** @description Compute the palette offset from an associated regex match. */

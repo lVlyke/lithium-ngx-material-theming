@@ -1,5 +1,5 @@
 import { Directive, HostBinding, Input, Optional, SkipSelf } from "@angular/core";
-import { StateEmitter, AotAware, OnInit } from "@lithiumjs/angular";
+import { StateEmitter, AotAware, OnInit, OnDestroy } from "@lithiumjs/angular";
 import { Subject, combineLatest, Observable } from "rxjs";
 import { filter, mergeMapTo, take } from "rxjs/operators"; 
 import { OverlayContainer } from "@angular/cdk/overlay";
@@ -13,6 +13,9 @@ export class ThemeContainer extends AotAware {
 
     @OnInit()
     private onInit$: Observable<void>;
+
+    @OnDestroy()
+    private onDestroy$: Observable<void>;
 
     @Input("theme")
     @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
@@ -43,7 +46,14 @@ export class ThemeContainer extends AotAware {
             .pipe(mergeMapTo(this.manageOverlay$))
             .pipe(take(1))
             .pipe(filter(manageOverlay => manageOverlay === undefined))
-            .subscribe(() => this.manageOverlay$.next(!parentThemeContainer));
+            .subscribe(() => this.manageOverlay$.next(!parentThemeContainer && !overlayContainer.getContainerElement().getAttribute("theme")));
+
+        // Remove the `theme` overlay attribute if this container is being destroyed and is still managing it
+        this.onDestroy$
+            .pipe(mergeMapTo(combineLatest(this.manageOverlay$, this.disabled$)))
+            .pipe(take(1))
+            .pipe(filter(([manage, disabled]) => manage && !disabled))
+            .subscribe(() => overlayContainer.getContainerElement().removeAttribute("theme"));
 
         // Update the `theme` and `disabled` attributes if the state changes
         this.theme$.subscribe(theme => this.attrTheme = theme);
