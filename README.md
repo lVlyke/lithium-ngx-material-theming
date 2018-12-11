@@ -14,7 +14,7 @@ Flexible and customizable Angular Material theming made easy. Powered by [@lithi
 
 * Check out the [quick start guide](/docs/quick-start.md).
 * (Coming Soon) View the full API documentation.
-* (Coming Soon) Take a look at the example app and live demo.
+* Take a look at the [example app](https://github.com/lVlyke/lithium-ngx-material-theming-example) and [live demo](https://lvlyke.github.io/lithium-ngx-material-theming-example/).
 
 ## Other information
 

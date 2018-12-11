@@ -12,7 +12,8 @@ const INJECTED_FILES = {
     "LICENSE": "./LICENSE",
     "bin": "./bin",
     "scripts": "./scripts",
-    "styles": "./src/styles"
+    "styles": "./src/styles",
+    "docs": "./docs"
 };
 
 const BUILD_DIR = "./dist";
