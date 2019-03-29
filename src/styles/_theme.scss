@@ -1,7 +1,7 @@
 @mixin app-declare-theme($theme-name) {
     li-theme-container, .cdk-overlay-container, * {
         li-theme-container, .cdk-overlay-container {
-            &[theme="#{$theme-name}"]:not([disabled="true"]) {
+            &[theme="#{$theme-name}"]:not([active="false"]) {
                 @content;
             }
         }

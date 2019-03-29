@@ -1,12 +1,28 @@
 {
   "name": "@lithiumjs/ngx-material-theming",
-  "description": "Flexible and customizable Angular Material theming made easy.",
-  "version": "0.0.5",
+  "description": "Dynamic and customizable Angular Material theming made easy.",
+  "version": "0.0.7",
   "main": "index.js",
   "license": "MIT",
   "private": false,
   "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
   "author": "Mychal Thompson <mychalrthompson@gmail.com>",
+  "keywords": [
+    "angular",
+    "dynamic",
+    "theme",
+    "theming",
+    "ngx",
+    "material",
+    "angular-material",
+    "lithium-angular",
+    "lithiumjs",
+    "ngx-material-theming",
+    "runtime",
+    "sass",
+    "scss",
+    "typescript"
+  ],
   "bin": {
     "ltc": "./bin/ltc.js"
   },
@@ -14,7 +30,7 @@
     "build:js": "node ./scripts/build.js"
   },
   "peerDependencies": {
-    "@angular/cdk": "7.0.4",
+    "@angular/cdk": "~7.0.4",
     "@angular/common": "6.x.x - 7.x.x",
     "@angular/core": "6.x.x - 7.x.x",
     "@angular/material": "6.x.x - 7.x.x",
