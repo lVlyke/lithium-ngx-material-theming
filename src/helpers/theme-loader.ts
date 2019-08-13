@@ -1,9 +1,10 @@
-import * as chroma from "chroma-js";
+import * as chromaImported from "chroma-js";
 import { BASIC_DARK_THEME_TEMPLATE } from "./templates/basic-dark-theme";
 import { BASIC_LIGHT_THEME_TEMPLATE } from "./templates/basic-light-theme";
 
 export type PaletteOffset = (keyof ThemeLoader.Palette) & number;
 
+// @dynamic
 export class ThemeLoader {
 
     private static readonly THEME_NAME_MATCHER = /%theme-name%/g;
@@ -113,6 +114,8 @@ export class ThemeLoader {
      * @return The compiled theme.
     */
     public static createRandom(name: string, isDark?: boolean): string {
+        const chroma = chromaImported;
+
         return this.createBasic(name,
             chroma.random().hex(),
             chroma.random().hex(),
@@ -154,6 +157,8 @@ export class ThemeLoader {
 
     /** @description Computes a color for a Material font palette using `baseColor` and the given `paletteOffset`. */
     private static computePaletteColor(baseColor: string, paletteOffset: PaletteOffset): string {
+        const chroma = chromaImported;
+
         // Darken or lighten the base color based on the palette offset number
         if (paletteOffset <= 500) {
             return chroma(baseColor).brighten((500 - paletteOffset) / 1000).hex();
@@ -164,6 +169,8 @@ export class ThemeLoader {
 
     /** @description Computes an appropriate font color (either black or white) that contrasts the given color. */
     private static computeFontColor(color: string): string {
+        const chroma = chromaImported;
+
         if (chroma(color).luminance() < 0.45) {
             return "white";
         } else {

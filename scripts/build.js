@@ -7,7 +7,6 @@ const child_process = require("child_process");
 const path = require("path");
 
 const INJECTED_FILES = {
-    "package.json": "./package.json",
     "README.md": "./README.md",
     "LICENSE": "./LICENSE",
     "bin": "./bin",
@@ -21,7 +20,7 @@ const BUILD_DIR = "./dist";
 (function main() {
     fs.removeSync(BUILD_DIR);
 
-    child_process.execSync("ngc");
+    child_process.execSync("ng-packagr -p package.json");
 
     for (let injectedFileName in INJECTED_FILES) {
         fs.copy(INJECTED_FILES[injectedFileName], path.join(BUILD_DIR, injectedFileName));

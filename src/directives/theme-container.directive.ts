@@ -1,5 +1,5 @@
-import { Directive, HostBinding, Input, Optional, SkipSelf } from "@angular/core";
-import { StateEmitter, AotAware, OnInit, OnDestroy } from "@lithiumjs/angular";
+import { Directive, HostBinding, Input, Optional, SkipSelf, ChangeDetectorRef } from "@angular/core";
+import { AutoPush, StateEmitter, AotAware, OnInit, OnDestroy } from "@lithiumjs/angular";
 import { Subject, combineLatest, Observable } from "rxjs";
 import { filter, mergeMapTo, take, skip, tap } from "rxjs/operators"; 
 import { OverlayContainer } from "@angular/cdk/overlay";
@@ -9,39 +9,39 @@ export const DEFAULT_THEME_NAME = "default";
 @Directive({
     selector: "li-theme-container"
 })
+@AutoPush()
 export class ThemeContainer extends AotAware {
 
     @OnInit()
-    private onInit$: Observable<void>;
+    private readonly onInit$: Observable<void>;
 
     @OnDestroy()
-    private onDestroy$: Observable<void>;
+    private readonly onDestroy$: Observable<void>;
 
     @Input("theme")
     @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
     public readonly theme$: Subject<string>;
+    @HostBinding("attr.theme")
+    public readonly theme: string;
 
     /** @deprecated `disabled` has been deprecated in favor of the `active` input parameter. */
     @Input("disabled")
-    @StateEmitter({ initialValue: false })
+    @StateEmitter({ initialValue: false, writeOnly: true })
     public readonly disabled$: Subject<boolean>;
 
     @Input("active")
     @StateEmitter({ initialValue: true })
     public readonly active$: Subject<boolean>;
+    @HostBinding("attr.active")
+    public readonly active: boolean;
 
     @Input("manageOverlay")
-    @StateEmitter()
+    @StateEmitter({ writeOnly: true })
     public readonly manageOverlay$: Subject<boolean>;
-
-    @HostBinding("attr.theme")
-    protected attrTheme: string;
-
-    @HostBinding("attr.active")
-    protected attrActive: boolean;
 
     constructor(
         overlayContainer: OverlayContainer,
+        @SkipSelf() _cdRef: ChangeDetectorRef,
         @SkipSelf() @Optional() parentThemeContainer: ThemeContainer
     ) {
         super();
@@ -59,10 +59,6 @@ export class ThemeContainer extends AotAware {
             .pipe(take(1))
             .pipe(filter(([manage, active]) => manage && active))
             .subscribe(() => overlayContainer.getContainerElement().removeAttribute("theme"));
-
-        // Update the `theme` and `active` attributes if the state changes
-        this.theme$.subscribe(theme => this.attrTheme = theme);
-        this.active$.subscribe(active => this.attrActive = active);
 
         /** @deprecated */
         this.disabled$.pipe(

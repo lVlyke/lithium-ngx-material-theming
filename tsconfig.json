@@ -9,9 +9,9 @@
         "stripInternal": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "module": "commonjs",
+        "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "es2015",
         "outDir": "./dist",
         "sourceMap": true,
         "lib": [
@@ -29,6 +29,7 @@
         "rewriteTsConfig": false
     },
     "angularCompilerOptions": {
-        "skipTemplateCodegen": true
+        "skipTemplateCodegen": true,
+        "strictMetadataEmit": true
     }
 }
