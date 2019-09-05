@@ -29,5 +29,7 @@
                 $theme-warn
             ));
         }
+
+        @content;
     }
 }

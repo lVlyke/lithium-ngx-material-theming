@@ -1,7 +1,7 @@
 {
   "name": "@lithiumjs/ngx-material-theming",
   "description": "Dynamic and customizable Angular Material theming made easy.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "private": false,
   "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
@@ -34,7 +34,7 @@
     "@angular/core": "6.x.x - 8.x.x",
     "@angular/material": "6.x.x - 8.x.x",
     "@lithiumjs/angular": ">=3.0.0",
-    "chroma-js": "^1.4.0",
+    "chroma-js": "^2.0.0",
     "rxjs": "6.x.x"
   },
   "devDependencies": {
@@ -50,7 +50,7 @@
     "@lithiumjs/angular": "3.0.0",
     "@types/chroma-js": "^1.4.0",
     "@types/node": "^10.12.9",
-    "chroma-js": "^1.4.0",
+    "chroma-js": "^2.0.6",
     "fs-extra": "^7.0.1",
     "ng-packagr": "^5.4.3",
     "node-sass": "^4.10.0",
