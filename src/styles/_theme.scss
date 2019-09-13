@@ -1,9 +1,14 @@
 @mixin app-declare-theme($theme-name) {
-    li-theme-container, .cdk-overlay-container, * {
-        li-theme-container, .cdk-overlay-container {
-            &[theme="#{$theme-name}"]:not([active="false"]) {
-                @content;
-            }
+    $theme-container: "[li-theme='#{$theme-name}']:not([active='false'])";
+
+    #{$theme-container} {
+        @content;
+    }
+
+    /* Support nested theme container definitions */
+    [li-theme]:not([li-theme="#{$theme-name}"]) {
+        #{$theme-container} {
+            @content;
         }
     }
 }

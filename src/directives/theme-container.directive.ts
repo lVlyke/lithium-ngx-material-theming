@@ -21,7 +21,7 @@ export class ThemeContainer extends AotAware {
     @Input("theme")
     @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
     public readonly theme$: Subject<string>;
-    @HostBinding("attr.theme")
+    @HostBinding("attr.li-theme")
     public readonly theme: string;
 
     /** @deprecated `disabled` has been deprecated in favor of the `active` input parameter. */
@@ -51,14 +51,14 @@ export class ThemeContainer extends AotAware {
             .pipe(mergeMapTo(this.manageOverlay$))
             .pipe(take(1))
             .pipe(filter(manageOverlay => manageOverlay === undefined))
-            .subscribe(() => this.manageOverlay$.next(!parentThemeContainer && !overlayContainer.getContainerElement().getAttribute("theme")));
+            .subscribe(() => this.manageOverlay$.next(!parentThemeContainer && !overlayContainer.getContainerElement().getAttribute("li-theme")));
 
         // Remove the `theme` overlay attribute if this container is being destroyed and is still managing it
         this.onDestroy$
             .pipe(mergeMapTo(combineLatest(this.manageOverlay$, this.active$)))
             .pipe(take(1))
             .pipe(filter(([manage, active]) => manage && active))
-            .subscribe(() => overlayContainer.getContainerElement().removeAttribute("theme"));
+            .subscribe(() => overlayContainer.getContainerElement().removeAttribute("li-theme"));
 
         /** @deprecated */
         this.disabled$.pipe(
@@ -72,9 +72,9 @@ export class ThemeContainer extends AotAware {
             .subscribe(([active, theme]) => {
                 const overlay = overlayContainer.getContainerElement();
                 if (active) {
-                    overlay.setAttribute("theme", theme);
+                    overlay.setAttribute("li-theme", theme);
                 } else {
-                    overlay.removeAttribute("theme");
+                    overlay.removeAttribute("li-theme");
                 }
             });
     }
