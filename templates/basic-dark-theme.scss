@@ -1,6 +1,111 @@
 @import "~@angular/material/theming";
 @import "src/styles/theme";
 
-$theme-name: "default";
+$theme-name: "%theme-name%";
 
-@include app-theme($theme-name, mat-palette($mat-indigo), mat-palette($mat-pink), mat-palette($mat-red), true);
+$theme-primary: (
+    50: #a00050,
+    100: #a00100,
+    200: #a00200,
+    300: #a00300,
+    400: #a00400,
+    500: #a00500,
+    600: #a00600,
+    700: #a00700,
+    800: #a00800,
+    900: #a00900,
+    A100: #a0a100,
+    A200: #a0a200,
+    A400: #a0a400,
+    A700: #a0a700,
+    contrast: (
+        50: #ac0050,
+        100: #ac0100,
+        200: #ac0200,
+        300: #ac0300,
+        400: #ac0400,
+        500: #ac0500,
+        600: #ac0600,
+        700: #ac0700,
+        800: #ac0800,
+        900: #ac0900,
+        A100: #aca100,
+        A200: #aca200,
+        A400: #aca400,
+        A700: #aca700
+    )
+);
+
+$theme-accent: (
+    50: #b00050,
+    100: #b00100,
+    200: #b00200,
+    300: #b00300,
+    400: #b00400,
+    500: #b00500,
+    600: #b00600,
+    700: #b00700,
+    800: #b00800,
+    900: #b00900,
+    A100: #b0a100,
+    A200: #b0a200,
+    A400: #b0a400,
+    A700: #b0a700,
+    contrast: (
+        50: #bc0050,
+        100: #bc0100,
+        200: #bc0200,
+        300: #bc0300,
+        400: #bc0400,
+        500: #bc0500,
+        600: #bc0600,
+        700: #bc0700,
+        800: #bc0800,
+        900: #bc0900,
+        A100: #bca100,
+        A200: #bca200,
+        A400: #bca400,
+        A700: #bca700
+    )
+);
+
+$theme-warn: (
+    50: #c00050,
+    100: #c00100,
+    200: #c00200,
+    300: #c00300,
+    400: #c00400,
+    500: #c00500,
+    600: #c00600,
+    700: #c00700,
+    800: #c00800,
+    900: #c00900,
+    A100: #c0a100,
+    A200: #c0a200,
+    A400: #c0a400,
+    A700: #c0a700,
+    contrast: (
+        50: #cc0050,
+        100: #cc0100,
+        200: #cc0200,
+        300: #cc0300,
+        400: #cc0400,
+        500: #cc0500,
+        600: #cc0600,
+        700: #cc0700,
+        800: #cc0800,
+        900: #cc0900,
+        A100: #cca100,
+        A200: #cca200,
+        A400: #cca400,
+        A700: #cca700
+    )
+);
+
+@include app-theme(
+    $theme-name,
+    mat-palette($theme-primary),
+    mat-palette($theme-accent),
+    mat-palette($theme-warn),
+    true
+);
