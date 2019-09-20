@@ -1,9 +1,6 @@
-@import "~@angular/material/theming";
-@import "src/styles/theme";
+$template-theme-name: "%theme-name%";
 
-$theme-name: "%theme-name%";
-
-$theme-primary: (
+$template-theme-primary: (
     50: #a00050,
     100: #a00100,
     200: #a00200,
@@ -36,7 +33,7 @@ $theme-primary: (
     )
 );
 
-$theme-accent: (
+$template-theme-accent: (
     50: #b00050,
     100: #b00100,
     200: #b00200,
@@ -69,7 +66,7 @@ $theme-accent: (
     )
 );
 
-$theme-warn: (
+$template-theme-warn: (
     50: #c00050,
     100: #c00100,
     200: #c00200,
@@ -100,12 +97,4 @@ $theme-warn: (
         A400: #cca400,
         A700: #cca700
     )
-);
-
-@include app-theme(
-    $theme-name,
-    mat-palette($theme-primary),
-    mat-palette($theme-accent),
-    mat-palette($theme-warn),
-    true
 );

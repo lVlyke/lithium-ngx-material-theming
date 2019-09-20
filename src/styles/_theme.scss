@@ -1,3 +1,5 @@
+@import "template";
+
 @mixin app-declare-theme($theme-name) {
     $theme-container: "[li-theme='#{$theme-name}']:not([active='false'])";
 

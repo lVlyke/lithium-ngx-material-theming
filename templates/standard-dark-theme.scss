@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+@import "src/styles/theme";
+
+@include app-theme(
+    $template-theme-name,
+    mat-palette($template-theme-primary),
+    mat-palette($template-theme-accent),
+    mat-palette($template-theme-warn),
+    true
+);
