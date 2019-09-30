@@ -69,7 +69,7 @@ export class ThemeGenerator {
         let themeData = options.templateData;
         let templateOptions = Object.assign({}, ThemeTemplateOptions.defaultValues, options.templateOptions || {});
 
-        themeData = themeData.replace(templateOptions.nameMatcher, name);
+        themeData = themeData.replace(templateOptions.nameMatcher, options.name);
         themeData = themeData.replace(templateOptions.primaryColorMatcher, (_match, $1) => options.primaryPalette[this.offset($1)]);
         themeData = themeData.replace(templateOptions.accentColorMatcher, (_match, $1) => options.accentPalette[this.offset($1)]);
         themeData = themeData.replace(templateOptions.warnColorMatcher, (_match, $1) => options.warnPalette[this.offset($1)]);
