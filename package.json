@@ -1,7 +1,7 @@
 {
   "name": "@lithiumjs/ngx-material-theming",
   "description": "Dynamic and customizable Angular Material theming made easy.",
-  "version": "0.4.0-beta.0",
+  "version": "0.4.0-beta.1",
   "license": "MIT",
   "private": false,
   "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
