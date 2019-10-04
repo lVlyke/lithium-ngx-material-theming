@@ -36,12 +36,12 @@ export namespace ThemeTemplateOptions {
 
     export const defaultValues: Readonly<ThemeTemplateOptions> = {
         nameMatcher: /%theme-name%/g,
-        primaryColorMatcher: /#a00(\d{3})/g,
-        accentColorMatcher: /#b00(\d{3})/g,
-        warnColorMatcher: /#c00(\d{3})/g,
-        primaryContrastColorMatcher: /#ac0(\d{3})/g,
-        accentContrastColorMatcher: /#bc0(\d{3})/g,
-        warnContrastColorMatcher: /#cc0(\d{3})/g
+        primaryColorMatcher: /#a0[0a](\d{3})/g,
+        accentColorMatcher: /#b0[0a](\d{3})/g,
+        warnColorMatcher: /#c0[0a](\d{3})/g,
+        primaryContrastColorMatcher: /#ac[0a](\d{3})/g,
+        accentContrastColorMatcher: /#bc[0a](\d{3})/g,
+        warnContrastColorMatcher: /#cc[0a](\d{3})/g
     };
 }
 
@@ -59,6 +59,8 @@ export interface ThemeCreationOptions extends Omit<
 
 // @dynamic
 export class ThemeGenerator {
+
+    public static chromaImpl: any;
 
     /**
      * @description Creates a new theme from the given template theme CSS and theme palettes and loads it for use with the given name.
@@ -137,17 +139,18 @@ export class ThemeGenerator {
      * @requires chroma-js
      */
     public static paletteColor(baseColor: string, paletteOffset: PaletteOffset): string {
-        try {
-            const chroma = require("chroma-js");
+        const chroma = this.resolveChroma();
+        const graduation = 0.3;
+        const offset = (paletteOffset < 500) ? (500 - paletteOffset) : (paletteOffset - 500);
+        const graduatedOffset = 0.2 + (offset * 0.01 * graduation);
 
-            // Darken or lighten the base color based on the palette offset number
-            if (paletteOffset <= 500) {
-                return chroma(baseColor).brighten((500 - paletteOffset) / 1000).hex();
-            } else {
-                return chroma(baseColor).darken((paletteOffset - 500) / 1000).hex();
-            }
-        } catch(_e) {
-            throw new Error("'chroma-js' is required to generate basic runtime themes.");
+        // Darken or lighten the base color based on the palette offset number
+        if (paletteOffset < 500) {
+            return chroma(baseColor).brighten(graduatedOffset ** 2).hex();
+        } else if (paletteOffset > 500) {
+            return chroma(baseColor).darken(graduatedOffset ** 2).hex();
+        } else {
+            return baseColor;
         }
     }
 
@@ -158,16 +161,10 @@ export class ThemeGenerator {
      * @requires chroma-js
      */
     public static contrastColor(color: string): string {
-        try {
-            const chroma = require("chroma-js");
-
-            if (chroma(color).luminance() < 0.45) {
-                return "white";
-            } else {
-                return "black";
-            }
-        } catch(_e) {
-            throw new Error("'chroma-js' is required to generate dynamic runtime themes.");
+        if (this.resolveChroma()(color).luminance() < 0.45) {
+            return "white";
+        } else {
+            return "black";
         }
     }
 
@@ -178,6 +175,24 @@ export class ThemeGenerator {
     /** @description Compute the palette offset from an associated regex match. */
     private static offset(matcher: string): PaletteOffset {
         return Number.parseInt(matcher) as PaletteOffset;
+    }
+
+    private static resolveChroma(): any {
+        if (this.chromaImpl) {
+            return this.chromaImpl;
+        }
+
+        try {
+            return require("chroma-js");
+        } catch(_e) {
+            // @ts-ignore
+            if (typeof chroma !== "undefined") {
+                // @ts-ignore
+                return chroma;
+            }
+
+            throw new Error("[ThemeGenerator] 'chroma-js' is required to generate dynamic runtime themes.");
+        }
     }
 }
 
