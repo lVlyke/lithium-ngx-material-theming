@@ -92,10 +92,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@lithiumjs/angular@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-3.0.0.tgz#734876410e71c3a75e39f2249513a4d4f0296e5e"
-  integrity sha512-rTfqWiBOGnacYmCXsAj5FkkWPg3Vyiw7a3geHDb9hn/LiEaXNS1FekQBp5aJb6XkkdzfBsf4YZSIQB4st5o/Yg==
+"@lithiumjs/angular@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-3.1.0.tgz#4fc96b8b5797c21d25af191ccea56da1e805af31"
+  integrity sha512-7pdvEpA2XApT6YnBt6Q+QN31WxlTD7kmpFnuPdVnjiSemoBDpb/Up+cBTM6bzeUrOsUVHsjU7K6KN7dfyhJiLQ==
   dependencies:
     tslib "^1.9.0"
 
