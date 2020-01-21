@@ -8,7 +8,7 @@ export class ThemeLoader {
      * @param compiledThemeData The pre-compiled theme data.
      * @param labelElement [Optional] If `true`, will attach a `data-theme-name` attribute to the `<style>` element set to the theme's name.
     */
-    public static loadCompiled(compiledThemeData: string, labelElement?: boolean): void {
+    public static loadCompiled(compiledThemeData: string, labelElement?: boolean): HTMLElement {
         const element = document.createElement("style");
         element.type = "text/css";
 
@@ -22,6 +22,7 @@ export class ThemeLoader {
         element.innerHTML = compiledThemeData;
 
         this.getHeadElement().appendChild(element);
+        return element;
     }
 
     /**

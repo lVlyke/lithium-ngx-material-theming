@@ -68,6 +68,7 @@ export class ThemeGenerator {
      * @return The compiled theme CSS.
     */
     public static createFromTemplate(options: TemplateThemeCreationOptions): string {
+        // Generate the theme data from the given template data:
         let themeData = options.templateData;
         let templateOptions = Object.assign({}, ThemeTemplateOptions.defaultValues, options.templateOptions || {});
 
@@ -80,7 +81,13 @@ export class ThemeGenerator {
         themeData = themeData.replace(templateOptions.accentContrastColorMatcher, (_match, $1) => options.accentPalette.contrast[this.offset($1)]);
         themeData = themeData.replace(templateOptions.warnContrastColorMatcher, (_match, $1) => options.warnPalette.contrast[this.offset($1)]);
 
-        ThemeLoader.loadCompiled(themeData);
+        const themeElement = ThemeLoader.loadCompiled(themeData);
+
+        // Store the color info for external programmatic use
+        themeElement.setAttribute("data-color-primary", options.primaryPalette[500]);
+        themeElement.setAttribute("data-color-accent", options.accentPalette[500]);
+        themeElement.setAttribute("data-color-warn", options.warnPalette[500]);
+
         return themeData;
     }
 
