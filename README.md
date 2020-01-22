@@ -5,6 +5,7 @@ Dynamic and customizable Angular Material theming made easy. Powered by [@lithiu
 ## Features
 
 * **SCSS mixins** make creating themes easy.
+* **Extend Material themes** with your own styles for your custom components and overrides.
 * **Change themes at run-time** with the `ThemeContainer` directive.
 * **Nested theme support** - Apply multiple themes independently to any part of your app.
 * **Offline theme compilation** of SCSS themes using the provided `ltc` CLI tool.
