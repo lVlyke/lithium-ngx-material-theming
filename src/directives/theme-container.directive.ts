@@ -1,5 +1,5 @@
-import { Directive, HostBinding, Input, Optional, SkipSelf, ChangeDetectorRef } from "@angular/core";
-import { AutoPush, StateEmitter, AotAware, OnInit, OnDestroy } from "@lithiumjs/angular";
+import { Directive, Input, Optional, SkipSelf, ChangeDetectorRef } from "@angular/core";
+import { AutoPush, StateEmitter, OnInit, OnDestroy, LiComponent } from "@lithiumjs/angular";
 import { Subject, combineLatest, Observable } from "rxjs";
 import { filter, mergeMapTo, take, skip, tap } from "rxjs/operators"; 
 import { OverlayContainer } from "@angular/cdk/overlay";
@@ -7,10 +7,13 @@ import { OverlayContainer } from "@angular/cdk/overlay";
 export const DEFAULT_THEME_NAME = "default";
 
 @Directive({
-    selector: "li-theme-container"
+    selector: "li-theme-container",
+    host: {
+        '[attr.li-theme]': 'theme',
+        '[attr.active]': 'active'
+    }
 })
-@AutoPush()
-export class ThemeContainer extends AotAware {
+export class ThemeContainer extends LiComponent {
 
     @OnInit()
     private readonly onInit$: Observable<void>;
@@ -21,8 +24,6 @@ export class ThemeContainer extends AotAware {
     @Input("theme")
     @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
     public readonly theme$: Subject<string>;
-    @HostBinding("attr.li-theme")
-    public readonly theme: string;
 
     /** @deprecated `disabled` has been deprecated in favor of the `active` input parameter. */
     @Input("disabled")
@@ -32,8 +33,6 @@ export class ThemeContainer extends AotAware {
     @Input("active")
     @StateEmitter({ initialValue: true })
     public readonly active$: Subject<boolean>;
-    @HostBinding("attr.active")
-    public readonly active: boolean;
 
     @Input("manageOverlay")
     @StateEmitter({ writeOnly: true })
@@ -41,10 +40,12 @@ export class ThemeContainer extends AotAware {
 
     constructor(
         overlayContainer: OverlayContainer,
-        @SkipSelf() _cdRef: ChangeDetectorRef,
+        cdRef: ChangeDetectorRef,
         @SkipSelf() @Optional() parentThemeContainer: ThemeContainer
     ) {
         super();
+
+        AutoPush.enable(this, cdRef);
 
         // Manage the overlay automatically if this is the root theme container and `manageOverlay` hasn't been defined
         this.onInit$
