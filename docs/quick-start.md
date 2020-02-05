@@ -234,7 +234,7 @@ $default-warn: mat-palette($mat-red);
 
 ## Using Material theme extensions at run-time
 
-While the previous example works well for compile-tile SCSS themes, we can also use our theme extensions for run-time theme creation.
+While the previous example works well for compile-time SCSS themes, we can also use our theme extensions for run-time theme creation.
 
 ### Create a theme template
 
