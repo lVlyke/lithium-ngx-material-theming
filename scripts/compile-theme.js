@@ -1,13 +1,20 @@
 #!/usr/bin/env node
 // @ts-check
 
-const sass = require("sass");
-const fs = require("fs");
+let sass;
+
+try {
+    sass = require("sass");
+} catch (_e) {
+    throw new Error("'sass' must be installed as a devDependency in order to use the Lithium theme compiler.");
+}
+
 const path = require("path");
 
 const NODE_MODULES_IMPORT_REGEX = /^(@import\s*(?:url\()?\s*)(['"`])~(.+)\2(\s*\)?\s*;?)$/gm;
 
 const api = module.exports = {
+    /** @return {Buffer} */
     compileData(/** @type {string} */ data, /** @type {Object} */ options) {
         const importers = options ? (options.importer || []) : [];
 
@@ -27,11 +34,12 @@ const api = module.exports = {
         if (result.css) {
             return result.css;
         } else {
+            //@ts-ignore
             throw new Error(result.formatted);
         }
     },
 
-    /** @return {string} */
+    /** @return {Buffer} */
     compileFile(/** @type {string} */ file, /** @type {Object} */ options) {
         const includePaths = options ? (options.includePaths || []) : [];
         const importers = options ? (options.importer || []) : [];
@@ -54,6 +62,7 @@ const api = module.exports = {
         if (result.css) {
             return result.css;
         } else {
+            //@ts-ignore
             throw new Error(result.formatted);
         }
     },

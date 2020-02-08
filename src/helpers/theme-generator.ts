@@ -1,5 +1,3 @@
-import { BASIC_DARK_THEME_TEMPLATE } from "./templates/basic-dark-theme";
-import { BASIC_LIGHT_THEME_TEMPLATE } from "./templates/basic-light-theme";
 import { ThemeLoader } from "./theme-loader";
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
@@ -176,7 +174,7 @@ export class ThemeGenerator {
     }
 
     private static loadStandardThemeTemplate(isDark: boolean): string {
-        return isDark ? BASIC_DARK_THEME_TEMPLATE : BASIC_LIGHT_THEME_TEMPLATE;
+        return isDark ? this.resolveBasicDarkThemeTemplate() : this.resolveBasicLightThemeTemplate();
     }
 
     /** @description Compute the palette offset from an associated regex match. */
@@ -199,6 +197,22 @@ export class ThemeGenerator {
             }
 
             throw new Error("[ThemeGenerator] 'chroma-js' is required to generate dynamic runtime themes.");
+        }
+    }
+
+    private static resolveBasicLightThemeTemplate(): string {
+        try {
+            return require("@lithiumjs/ngx-material-theming-templates/standard-light-theme.json").data;
+        } catch(_e) {
+            throw new Error("[ThemeGenerator] '@lithiumjs/ngx-material-theming-templates' is required to generate dynamic runtime themes.");
+        }
+    }
+
+    private static resolveBasicDarkThemeTemplate(): string {
+        try {
+            return require("@lithiumjs/ngx-material-theming-templates/standard-dark-theme.json").data;
+        } catch(_e) {
+            throw new Error("[ThemeGenerator] '@lithiumjs/ngx-material-theming-templates' is required to generate dynamic runtime themes.");
         }
     }
 }
