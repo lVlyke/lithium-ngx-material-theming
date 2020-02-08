@@ -79,8 +79,8 @@
 
 "@lithiumjs/angular@5.0.0-rc.1":
   version "5.0.0-rc.1"
-  resolved "http://localhost:4873/@lithiumjs%2fangular/-/angular-5.0.0-rc.1.tgz#11e4473cccdc357951665c6471ec7a5de8d6e3bb"
-  integrity sha512-Sr2BekiwI8H/BbuI0QMKnShP8bCqE8Y4VhS4LVLbq4hIfqHi4ZIAKZAf8DKu2wIsT6imsBZ17Qz72Xaj80V/QQ==
+  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-5.0.0-rc.1.tgz#eb9abcc1c27e84c2d1aa172c3417a7e51dfe9bae"
+  integrity sha512-g6C6p6fWZj72MO9x1DVFIwf7wKwu90svlPebw5dbtqOUuKGKeTvji6d5PWyizCc9OIB50NW1FsESJSJUaJFl/A==
 
 "@lithiumjs/ngx-material-theming-templates@0.5.0-rc.0":
   version "0.5.0-rc.0"
