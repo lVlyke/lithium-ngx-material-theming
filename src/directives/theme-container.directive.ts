@@ -44,6 +44,7 @@ export class ThemeContainer extends LiComponent {
         @SkipSelf() @Optional() parentThemeContainer: ThemeContainer
     ) {
         super();
+        let wasManagingOverlay = false;
 
         AutoPush.enable(this, cdRef);
 
@@ -69,13 +70,14 @@ export class ThemeContainer extends LiComponent {
 
         // Update the overlay if the state changes and we're managing the overlay
         combineLatest(this.active$, this.theme$, this.manageOverlay$)
-            .pipe(filter(([, , manageOverlay]) => manageOverlay))
-            .subscribe(([active, theme]) => {
+            .subscribe(([active, theme, manageOverlay]) => {
                 const overlay = overlayContainer.getContainerElement();
-                if (active) {
+                if (manageOverlay && active) {
                     overlay.setAttribute("li-theme", theme);
-                } else {
+                    wasManagingOverlay = true;
+                } else if (wasManagingOverlay) {
                     overlay.removeAttribute("li-theme");
+                    wasManagingOverlay = false;
                 }
             });
     }
