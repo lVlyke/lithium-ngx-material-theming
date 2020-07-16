@@ -8,9 +8,13 @@ This project depends on [@lithiumjs/angular](https://github.com/lVlyke/lithium-a
 npm install @lithiumjs/angular @lithiumjs/ngx-material-theming
 ```
 
-[Chroma.js](https://github.com/gka/chroma.js/) is an optional dependency and is required only if you plan on generating Material color palettes at run-time.
+[Chroma.js](https://github.com/gka/chroma.js/) is an optional dependency and is required only if you plan on generating Material color palettes at run-time. If you're following along with this guide, you'll also need to install it:
 
-After installing, make sure you import the project's module in your application:
+```bash
+npm install chroma-js
+```
+
+After installation is complete, import the project's module into your application:
 
 ```ts
 import { NgxMaterialThemingModule } from "@lithiumjs/ngx-material-theming";
@@ -146,6 +150,14 @@ export class AppComponent {
     });
   }
 }
+```
+
+**Note:** If your app uses `ThemeGenerator.create`, you'll also need to install [@lithiumjs/ngx-material-theming-templates](https://github.com/lVlyke/lithium-ngx-material-theming-templates), which provides basic pre-compiled theme templates. If you are compiling your own custom theme templates and are using `ThemeGenerator.createFromTemplate` you **do not** need this dependency.
+
+If you're following along with this guide, you'll also need to install it:
+
+```bash
+npm install @lithiumjs/ngx-material-theming-templates
 ```
 
 Now, modify the `<li-theme-container>` definition from earlier:

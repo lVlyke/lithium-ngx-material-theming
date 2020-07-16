@@ -77,15 +77,15 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@lithiumjs/angular@5.0.0-rc.1":
-  version "5.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-5.0.0-rc.1.tgz#eb9abcc1c27e84c2d1aa172c3417a7e51dfe9bae"
-  integrity sha512-g6C6p6fWZj72MO9x1DVFIwf7wKwu90svlPebw5dbtqOUuKGKeTvji6d5PWyizCc9OIB50NW1FsESJSJUaJFl/A==
+"@lithiumjs/angular@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-5.1.0.tgz#348fd7c010b0e79bd35f595d0490f2126afd5159"
+  integrity sha512-d8+D/hbsNNsy3fZ2WRRNiEGxlSbCQX3rJ9kiY8OcWykw5qh74Ul7X5dpfmRfWd2Jm3e8Iwmn7EkiRVahAXpLpw==
 
-"@lithiumjs/ngx-material-theming-templates@0.5.0-rc.0":
-  version "0.5.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-material-theming-templates/-/ngx-material-theming-templates-0.5.0-rc.0.tgz#a2a50bd1f667321b757257a55783b30689a1ca2e"
-  integrity sha512-K3PF5r32YoiAdnNo+10vo6DS1BL/Diw4qDwKZMr89iDNtlZ1TCMEAY+A4m+z8codQqWQ8NNrkYfSVcNo6ckFbg==
+"@lithiumjs/ngx-material-theming-templates@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-material-theming-templates/-/ngx-material-theming-templates-0.5.0.tgz#b9b5740afd675535ac660928bb4cf2520d195817"
+  integrity sha512-b4sGzzc/Wr/oDkEOHP0wKKQvB8l03ELTnRVbpmAUUACvjqlT3IcxSJhdLAQpoEXVSQD45zzkAQaFWv5kvcbAFg==
 
 "@rollup/plugin-commonjs@^11.0.2":
   version "11.0.2"
