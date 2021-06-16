@@ -22,20 +22,29 @@ export class ThemeContainer extends LiComponent {
     private readonly onDestroy$: Observable<void>;
 
     @Input("theme")
-    @StateEmitter({ initialValue: DEFAULT_THEME_NAME })
+    public theme: string;
+
+    @StateEmitter({ propertyName: "theme", initialValue: DEFAULT_THEME_NAME })
     public readonly theme$: Subject<string>;
 
     /** @deprecated `disabled` has been deprecated in favor of the `active` input parameter. */
     @Input("disabled")
-    @StateEmitter({ initialValue: false, writeOnly: true })
+    public disabled: boolean;
+
+    /** @deprecated `disabled$` has been deprecated in favor of the `active$` input parameter. */
+    @StateEmitter({ propertyName: "disabled", initialValue: false, writeOnly: true })
     public readonly disabled$: Subject<boolean>;
 
     @Input("active")
-    @StateEmitter({ initialValue: true })
+    public active: boolean;
+
+    @StateEmitter({ propertyName: "active", initialValue: true })
     public readonly active$: Subject<boolean>;
 
     @Input("manageOverlay")
-    @StateEmitter({ writeOnly: true })
+    public manageOverlay: boolean;
+
+    @StateEmitter({ propertyName: "manageOverlay", writeOnly: true })
     public readonly manageOverlay$: Subject<boolean>;
 
     constructor(
