@@ -1,7 +1,7 @@
 import { Directive, Input, Optional, SkipSelf, ChangeDetectorRef } from "@angular/core";
 import { AutoPush, StateEmitter, OnInit, OnDestroy, LiComponent } from "@lithiumjs/angular";
 import { Subject, combineLatest, Observable } from "rxjs";
-import { filter, mergeMapTo, take, skip, tap } from "rxjs/operators"; 
+import { filter, mergeMapTo, take, skip, tap, mergeMap } from "rxjs/operators"; 
 import { OverlayContainer } from "@angular/cdk/overlay";
 
 export const DEFAULT_THEME_NAME = "default";
@@ -58,18 +58,18 @@ export class ThemeContainer extends LiComponent {
         AutoPush.enable(this, cdRef);
 
         // Manage the overlay automatically if this is the root theme container and `manageOverlay` hasn't been defined
-        this.onInit$
-            .pipe(mergeMapTo(this.manageOverlay$))
-            .pipe(take(1))
-            .pipe(filter(manageOverlay => manageOverlay === undefined))
-            .subscribe(() => this.manageOverlay$.next(!parentThemeContainer && !overlayContainer.getContainerElement().getAttribute("li-theme")));
+        this.onInit$.pipe(
+            mergeMapTo(this.manageOverlay$),
+            take(1),
+            filter(manageOverlay => manageOverlay === undefined)
+        ).subscribe(() => this.manageOverlay$.next(!parentThemeContainer && !overlayContainer.getContainerElement().getAttribute("li-theme")));
 
         // Remove the `theme` overlay attribute if this container is being destroyed and is still managing it
-        this.onDestroy$
-            .pipe(mergeMapTo(combineLatest(this.manageOverlay$, this.active$)))
-            .pipe(take(1))
-            .pipe(filter(([manage, active]) => manage && active))
-            .subscribe(() => overlayContainer.getContainerElement().removeAttribute("li-theme"));
+        this.onDestroy$.pipe(
+            mergeMapTo(combineLatest([this.manageOverlay$, this.active$])),
+            take(1),
+            filter(([manage, active]) => manage && active)
+        ).subscribe(() => overlayContainer.getContainerElement().removeAttribute("li-theme"));
 
         /** @deprecated */
         this.disabled$.pipe(
@@ -78,16 +78,15 @@ export class ThemeContainer extends LiComponent {
         ).subscribe(disabled => this.active$.next(!disabled));
 
         // Update the overlay if the state changes and we're managing the overlay
-        combineLatest(this.active$, this.theme$, this.manageOverlay$)
-            .subscribe(([active, theme, manageOverlay]) => {
-                const overlay = overlayContainer.getContainerElement();
-                if (manageOverlay && active) {
-                    overlay.setAttribute("li-theme", theme);
-                    wasManagingOverlay = true;
-                } else if (wasManagingOverlay) {
-                    overlay.removeAttribute("li-theme");
-                    wasManagingOverlay = false;
-                }
-            });
+        combineLatest([this.active$, this.theme$, this.manageOverlay$]).subscribe(([active, theme, manageOverlay]) => {
+            const overlay = overlayContainer.getContainerElement();
+            if (manageOverlay && active) {
+                overlay.setAttribute("li-theme", theme);
+                wasManagingOverlay = true;
+            } else if (wasManagingOverlay) {
+                overlay.removeAttribute("li-theme");
+                wasManagingOverlay = false;
+            }
+        });
     }
 }

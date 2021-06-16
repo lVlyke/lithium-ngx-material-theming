@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "template";
 
 @mixin app-declare-theme($theme-name) {
@@ -24,17 +25,21 @@
 ) {
     @include app-declare-theme($theme-name) {
         @if $is-dark {
-            @include angular-material-theme(mat-dark-theme(
-                $theme-primary,
-                $theme-accent,
-                $theme-warn
-            ));
+            @include mat.all-component-themes(mat.define-dark-theme((
+                color: (
+                    primary: $theme-primary,
+                    accent: $theme-accent,
+                    warn: $theme-warn
+                )
+            )));
         } @else {
-            @include angular-material-theme(mat-light-theme(
-                $theme-primary,
-                $theme-accent,
-                $theme-warn
-            ));
+            @include mat.all-component-themes(mat.define-light-theme((
+                color: (
+                    primary: $theme-primary,
+                    accent: $theme-accent,
+                    warn: $theme-warn
+                )
+            )));
         }
 
         @content;
