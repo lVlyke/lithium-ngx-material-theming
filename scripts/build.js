@@ -12,7 +12,8 @@ const INJECTED_FILES = {
     "bin": "./bin",
     "scripts": "./scripts",
     "styles": "./src/styles",
-    "docs": "./docs"
+    "docs": "./docs",
+    "index.scss": "./src/index.scss"
 };
 
 const BUILD_DIR = "./dist";

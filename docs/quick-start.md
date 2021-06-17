@@ -34,10 +34,10 @@ export class AppModule {}
 If you aren't already using custom Angular Material theming, add the following to your root SCSS file (usually ```styles.scss```):
 
 ```scss
-@import "~@angular/material/theming";
+@use "~@angular/material" as mat;
 
-// Only include mat-core once in your app
-@include mat-core();
+// Only include mat.core() once in your app
+@include mat.core();
 ```
 
 ## Create your first theme
@@ -45,13 +45,14 @@ If you aren't already using custom Angular Material theming, add the following t
 Now it's time to create your application's first theme. Create a new SCSS file called ```default-theme.scss``` with the following content:
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
+@use "~@angular/material" as mat;
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include app-theme("default",
-    mat-palette($mat-blue),
-    mat-palette($mat-pink),
-    mat-palette($mat-red)
+@include mat-theming.delcare-theme(
+    $name: "default",
+    $primary: mat.define-palette(mat.$blue-palette),
+    $accent: mat.define-palette(mat.$pink-palette),
+    $warn: mat.define-palette(mat.$red-palette)
 );
 ```
 
@@ -77,14 +78,15 @@ With that, you should now see the theme we just defined being applied to your ap
 Now, let's add a second theme. Create a new SCSS file called ```dark-theme.scss``` with the following content:
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
+@use "~@angular/material" as mat;
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include app-theme("dark",
-    mat-palette($mat-green),
-    mat-palette($mat-blue),
-    mat-palette($mat-red),
-    true
+@include mat-theming.delcare-theme(
+    $name: "dark",
+    $primary: mat.define-palette(mat.$green-palette),
+    $accent: mat.define-palette(mat.$blue-palette),
+    $warn: mat.define-palette(mat.$red-palette),
+    $is-dark: true
 );
 ```
 
@@ -193,33 +195,37 @@ There is no restriction on how many `ThemeContainer`s your app can have or how t
 You can define extensions to your Material themes directly in the theme definition. Let's go back to the first theme we set up earlier:
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
+@use "~@angular/material" as mat;
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include app-theme("default",
-    mat-palette($mat-blue),
-    mat-palette($mat-pink),
-    mat-palette($mat-red)
+@include mat-theming.delcare-theme(
+    $name: "default",
+    $primary: mat.define-palette(mat.$blue-palette),
+    $accent: mat.define-palette(mat.$pink-palette),
+    $warn: mat.define-palette(mat.$red-palette)
 );
 ```
 
 To extend this theme, we can simply declare our theme extensions directly inside the theme definition body:
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
+@use "~@angular/material" as mat;
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
 
-$default-primary: mat-palette($mat-blue);
-$default-accent: mat-palette($mat-pink);
-$default-warn: mat-palette($mat-red);
+$default-primary: mat.define-palette(mat.$blue-palette);
+$default-accent: mat.define-palette(mat.$pink-palette);
+$default-warn: mat.define-palette(mat.$red-palette);
 
-@include app-theme("default",
-    $default-primary,
-    $default-accent,
-    $default-warn
+@include mat-theming.declare-theme(
+    $name: "default",
+    $primary: $default-primary,
+    $accent: $default-accent,
+    $warn: $default-warn
 ) {
+    // We can list all of our theme overrides below:
+
     foo-component {
-        background-color: mat-color($default-primary);
+        background-color: mat.get-color-from-palette($default-primary);
     }
 }
 ```
@@ -227,20 +233,26 @@ $default-warn: mat-palette($mat-red);
 Though it isn't required, it is recommended that you split up your theme extensions by component into seperate files as mixins, and then include the mixins within your theme definition, i.e.:
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
-@import "theme_exts/foo-component";
+@use "~@angular/material" as mat;
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "theme_exts/foo-component" foo-ext; // This contains a mixin with our custom foo-component theme overrides
 
-$default-primary: mat-palette($mat-blue);
-$default-accent: mat-palette($mat-pink);
-$default-warn: mat-palette($mat-red);
+$default-primary: mat.define-palette(mat.$blue-palette);
+$default-accent: mat.define-palette(mat.$pink-palette);
+$default-warn: mat.define-palette(mat.$red-palette);
 
-@include app-theme("default",
-    $default-primary,
-    $default-accent,
-    $default-warn
+@include mat-theming.declare-theme(
+    $name: "default",
+    $primary: $default-primary,
+    $accent: $default-accent,
+    $warn: $default-warn
 ) {
-    @include theme-ext-foo-component($default-primary, $default-accent, $default-warn);
+    // Import the foo-component theme overrides using a mixin (i.e. `declare`):
+    @include foo-ext.declare(
+        $primary: $default-primary,
+        $accent: $default-accent,
+        $warn: $default-warn
+    );
 }
 ```
 
@@ -252,24 +264,20 @@ While the previous example works well for compile-time SCSS themes, we can also 
 
 We need to create a _theme template_ with our extensions. Think of a theme template as a blueprint that can be used to create themes at run-time.
 
-First, create a new file called ```theme-template.scss``` with the following content (make sure you do not import it anywhere):
+First, create a new file called ```theme-template.scss``` with the following content (make sure you do *not* import this file in your app styles):
 
 ```scss
-@import "~@angular/material/theming";
-@import "~@lithiumjs/ngx-material-theming/styles/theme";
-@import "theme_exts/foo-component";
+@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "theme_exts/foo-component" foo-ext;
 
-$template-primary: mat-palette($template-theme-primary);
-$template-accent: mat-palette($template-theme-accent);
-$template-warn: mat-palette($template-theme-warn);
+@include mat-theming.declare-template-theme() {
+    // All theme overrides are declared as normal using the template theme palettes:
 
-@include app-theme(
-    $template-theme-name,
-    $template-primary,
-    $template-accent,
-    $template-warn
-) {
-    @include theme-ext-foo-component($template-primary, $template-accent, $template-warn);
+    @include foo-ext.declare(
+        $primary: mat-theming.$template-primary-palette,
+        $accent: mat-theming.$template-accent-palette,
+        $warn: mat-theming.$template-warn-palette
+    );
 }
 ```
 

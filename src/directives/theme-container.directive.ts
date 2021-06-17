@@ -1,7 +1,7 @@
 import { Directive, Input, Optional, SkipSelf, ChangeDetectorRef } from "@angular/core";
 import { AutoPush, StateEmitter, OnInit, OnDestroy, LiComponent } from "@lithiumjs/angular";
 import { Subject, combineLatest, Observable } from "rxjs";
-import { filter, mergeMapTo, take, skip, tap, mergeMap } from "rxjs/operators"; 
+import { filter, mergeMapTo, take, skip, tap } from "rxjs/operators"; 
 import { OverlayContainer } from "@angular/cdk/overlay";
 
 export const DEFAULT_THEME_NAME = "default";

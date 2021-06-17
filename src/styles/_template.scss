@@ -1,3 +1,5 @@
+@use "~@angular/material" as mat;
+
 $template-theme-name: "%theme-name%";
 
 $template-theme-primary: (
@@ -33,6 +35,8 @@ $template-theme-primary: (
     )
 );
 
+$template-primary-palette: mat.define-palette($template-theme-primary);
+
 $template-theme-accent: (
     50: #b00050,
     100: #b00100,
@@ -66,6 +70,8 @@ $template-theme-accent: (
     )
 );
 
+$template-accent-palette: mat.define-palette($template-theme-accent);
+
 $template-theme-warn: (
     50: #c00050,
     100: #c00100,
@@ -98,3 +104,5 @@ $template-theme-warn: (
         A700: #cca700
     )
 );
+
+$template-warn-palette: mat.define-palette($template-theme-warn);
