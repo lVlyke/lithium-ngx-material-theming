@@ -276,17 +276,17 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@lithiumjs/angular@^6.1.0-beta.0":
-  version "6.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-6.1.0-beta.0.tgz#41a5dd6d11057a34f7b11b92bca4688a0389aa8b"
-  integrity sha512-fAwv98qwolcRCzfy2g9IrC2PXgr9daMXPfe5C/8+gNhwRYIJDzbd1OVrB3DtiK1W7BsPYU3PiucnaAA/uJWHZw==
+"@lithiumjs/angular@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/angular/-/angular-6.1.0.tgz#290bbe2c06b9bddb4b5f3beb48802a835e991bff"
+  integrity sha512-LAboS0NGRtuhFtn5d9g0EtdaazlCq9BXVt+n0hxUQk4Q74myuQbJFQMYCrtt9rCDdRO1oE4WA489QTfYAeCSSQ==
   dependencies:
     tslib "^2.1.0"
 
-"@lithiumjs/ngx-material-theming-templates@0.7.0-rc.0":
-  version "0.7.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-material-theming-templates/-/ngx-material-theming-templates-0.7.0-rc.0.tgz#93c9b6d1ffa4bb54cc99d9d5ef21dae4a4112656"
-  integrity sha512-cR/EZWQij4qxdFEFZu711Yrq75pwRI4BeRC2KRAeUqxk2ZcQBdWd1fV6bCPlxhPulNq7dtwK/x4BAd6rmlIxJw==
+"@lithiumjs/ngx-material-theming-templates@0.7.0-rc.1":
+  version "0.7.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-material-theming-templates/-/ngx-material-theming-templates-0.7.0-rc.1.tgz#13135a133065b8685a743fc8c6046605b43db820"
+  integrity sha512-+jsCSZbh48XQBAR2HwjUkVZXVxcfgfolwxlx6NZOtDPQ6SkNvNjt8OXYk2RJCr+TVNs+iRW6tgmoZtZPjpbsNA==
 
 "@npmcli/move-file@^1.0.1":
   version "1.1.2"
