@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitAny": true,
@@ -28,6 +29,8 @@
     ],
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,
-        "strictMetadataEmit": true
+        "strictMetadataEmit": true,
+        "strictTemplates": true,
+        "fullTemplateTypeCheck": true
     }
 }
