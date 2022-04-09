@@ -14,8 +14,8 @@ export class ThemeLoader {
 
         if (labelElement === undefined ? true : labelElement) {
             const nameParse = this.THEME_NAME_PARSER.exec(compiledThemeData);
-            if (nameParse.length > 1) {
-                element.setAttribute("data-theme-name", "" + nameParse[1]);
+            if (nameParse && nameParse.length > 1) {
+                element.setAttribute("data-theme-name", "" + nameParse?.[1]);
             }
         }
 
