@@ -9,7 +9,7 @@ Dynamic and customizable Angular Material theming made easy. Powered by [@lithiu
 * **Change themes at run-time** with the `ThemeContainer` directive.
 * **Nested theme support** - Apply multiple themes independently to any part of your app.
 * **Offline theme compilation** of SCSS themes using the provided `ltc` CLI tool.
-* **Run-time theme creation** - True dynamic themes; Easily generate brand new themes at run-time.
+* **Run-time theme creation** - True dynamic themes; Easily generate brand new themes at runtime.
 
 ## Getting started
 

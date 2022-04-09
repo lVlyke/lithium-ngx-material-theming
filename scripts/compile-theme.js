@@ -11,15 +11,15 @@ try {
 
 const path = require("path");
 
-const NODE_MODULES_IMPORT_REGEX = /^(@import\s*(?:url\()?\s*)(['"`])~(.+)\2(\s*\)?\s*;?)$/gm;
+const NODE_MODULES_IMPORT_REGEX = /^(@import\s*(?:url\()?\s*)(['"`])\@(.+)\2(\s*\)?\s*;?)$/gm;
 
 const api = module.exports = {
     /** @return {Buffer} */
     compileData(/** @type {string} */ data, /** @type {Object} */ options) {
         const importers = options ? (options.importer || []) : [];
 
-        // Replace any occurences of '@import "~dep"` with '@import "node_modules/dep"`
-        data = data.replace(NODE_MODULES_IMPORT_REGEX, "$1$2node_modules/$3$2$4");
+        // Replace any occurences of '@import "@dep"` with '@import "node_modules/@dep"`
+        data = data.replace(NODE_MODULES_IMPORT_REGEX, "$1$2node_modules/@$3$2$4");
 
         //@ts-ignore
         const result = sass.renderSync({
@@ -68,9 +68,9 @@ const api = module.exports = {
     },
 
     nodeImporter (/** @type {string} */ url, /** @type {string} */ prev) {
-        // Replace all leading '~'s with 'node_modules'
-        if (url.startsWith("~")) {
-            return { file: url.replace(/^~/g, "node_modules/") };
+        // Replace all leading '@'s with 'node_modules'
+        if (url.startsWith("@")) {
+            return { file: url.replace(/^\@/g, "node_modules/@") };
         }
 
         return null;

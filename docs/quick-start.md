@@ -8,7 +8,7 @@ This project depends on [@lithiumjs/angular](https://github.com/lVlyke/lithium-a
 npm install @lithiumjs/angular @lithiumjs/ngx-material-theming
 ```
 
-[Chroma.js](https://github.com/gka/chroma.js/) is an optional dependency and is required only if you plan on generating Material color palettes at run-time. If you're following along with this guide, you'll also need to install it:
+[Chroma.js](https://github.com/gka/chroma.js/) is an optional dependency and is required only if you plan on generating Material color palettes at runtime. If you're following along with this guide, you'll also need to install it:
 
 ```bash
 npm install chroma-js
@@ -34,7 +34,7 @@ export class AppModule {}
 If you aren't already using custom Angular Material theming, add the following to your root SCSS file (usually ```styles.scss```):
 
 ```scss
-@use "~@angular/material" as mat;
+@use "@angular/material" as mat;
 
 // Only include mat.core() once in your app
 @include mat.core();
@@ -45,8 +45,8 @@ If you aren't already using custom Angular Material theming, add the following t
 Now it's time to create your application's first theme. Create a new SCSS file called ```default-theme.scss``` with the following content:
 
 ```scss
-@use "~@angular/material" as mat;
-@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 
 @include mat-theming.delcare-theme(
     $name: "default",
@@ -78,8 +78,8 @@ With that, you should now see the theme we just defined being applied to your ap
 Now, let's add a second theme. Create a new SCSS file called ```dark-theme.scss``` with the following content:
 
 ```scss
-@use "~@angular/material" as mat;
-@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 
 @include mat-theming.delcare-theme(
     $name: "dark",
@@ -135,8 +135,8 @@ export class FooComponent {
 Up until now we've only applied themes we created ahead of time. Now let's apply a theme that we create while the app is running. First, generate a random theme by making the following call during your component's initialization:
 
 ```ts
-import * as chroma from "chroma-js";
-import { ThemeGenerator } from "@lithiumjs/ngx-material-theming";
+import chroma from "chroma-js";
+import { ThemeGenerator } from "@lithiumjs/ngx-material-theming/dynamic";
 
 @Component()
 export class AppComponent {
@@ -154,7 +154,7 @@ export class AppComponent {
 }
 ```
 
-**Note:** If your app uses `ThemeGenerator.create`, you'll also need to install [@lithiumjs/ngx-material-theming-templates](https://github.com/lVlyke/lithium-ngx-material-theming-templates), which provides basic pre-compiled theme templates. If you are compiling your own custom theme templates and are using `ThemeGenerator.createFromTemplate` you **do not** need this dependency.
+**Note:** If your app uses `ThemeGenerator` or any other utilities from `@lithiumjs/ngx-material-theming/dynamic`, you'll also need to install [@lithiumjs/ngx-material-theming-templates](https://github.com/lVlyke/lithium-ngx-material-theming-templates), which provides basic pre-compiled theme templates. If you are compiling your own custom theme templates and are not using `ThemeGenerator` you **do not** need this dependency.
 
 If you're following along with this guide, you'll also need to install it:
 
@@ -195,8 +195,8 @@ There is no restriction on how many `ThemeContainer`s your app can have or how t
 You can define extensions to your Material themes directly in the theme definition. Let's go back to the first theme we set up earlier:
 
 ```scss
-@use "~@angular/material" as mat;
-@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 
 @include mat-theming.delcare-theme(
     $name: "default",
@@ -209,8 +209,8 @@ You can define extensions to your Material themes directly in the theme definiti
 To extend this theme, we can simply declare our theme extensions directly inside the theme definition body:
 
 ```scss
-@use "~@angular/material" as mat;
-@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 
 $default-primary: mat.define-palette(mat.$blue-palette);
 $default-accent: mat.define-palette(mat.$pink-palette);
@@ -233,8 +233,8 @@ $default-warn: mat.define-palette(mat.$red-palette);
 Though it isn't required, it is recommended that you split up your theme extensions by component into seperate files as mixins, and then include the mixins within your theme definition, i.e.:
 
 ```scss
-@use "~@angular/material" as mat;
-@use "~@lithiumjs/ngx-material-theming" as mat-theming;
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 @use "theme_exts/foo-component" foo-ext; // This contains a mixin with our custom foo-component theme overrides
 
 $default-primary: mat.define-palette(mat.$blue-palette);
@@ -300,9 +300,9 @@ If compiled successfully, you will see a new file called ```theme-template.css``
 Now that we have a compiled theme template, we can use it at run-time to generate dynamic themes that include our theme extensions. We must first load the template file. This can be done many ways, but the canonical Angular way would be to use ```HttpClient``` to load the file. After loading the template file, we can use ```ThemeGenerator.createFromTemplate``` to create a new theme:
 
 ```ts
-import * as chroma from "chroma-js";
+import chroma from "chroma-js";
 import { HttpClient } from "@angular/common/http";
-import { ThemeGenerator } from "@lithiumjs/ngx-material-theming";
+import { ThemeGenerator } from "@lithiumjs/ngx-material-theming/dynamic";
 
 @Component()
 export class AppComponent {
