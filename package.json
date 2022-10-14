@@ -1,8 +1,7 @@
 {
-  "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "@lithiumjs/ngx-material-theming",
   "description": "Dynamic and customizable Angular Material theming made easy.",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "MIT",
   "private": false,
   "repository": "https://github.com/lVlyke/lithium-ngx-material-theming",
@@ -39,45 +38,35 @@
     }
   },
   "peerDependencies": {
-    "@angular/cdk": ">=13.0.0 <14.0.0",
-    "@angular/common": ">=13.0.0 <14.0.0",
-    "@angular/core": ">=13.0.0 <14.0.0",
-    "@angular/material": ">=13.0.0 <14.0.0",
+    "@angular/cdk": ">=13.0.0 <15.0.0",
+    "@angular/common": ">=13.0.0 <15.0.0",
+    "@angular/core": ">=13.0.0 <15.0.0",
+    "@angular/material": ">=13.0.0 <15.0.0",
     "@lithiumjs/angular": ">=7.0.0",
     "rxjs": "7.x.x"
   },
   "devDependencies": {
-    "@angular/animations": "^13.3.2",
-    "@angular/cdk": "^13.3.2",
-    "@angular/common": "^13.3.2",
-    "@angular/compiler": "^13.3.2",
-    "@angular/compiler-cli": "^13.3.2",
-    "@angular/core": "^13.3.2",
-    "@angular/forms": "^13.3.2",
-    "@angular/material": "^13.3.2",
-    "@angular/platform-browser": "^13.3.2",
-    "@lithiumjs/angular": "^7.1.0",
-    "@lithiumjs/ngx-material-theming-templates": "0.7.0",
+    "@angular/animations": "^14.2.6",
+    "@angular/cdk": "^14.2.5",
+    "@angular/common": "^14.2.6",
+    "@angular/compiler": "^14.2.6",
+    "@angular/compiler-cli": "^14.2.6",
+    "@angular/core": "^14.2.6",
+    "@angular/forms": "^14.2.6",
+    "@angular/material": "^14.2.5",
+    "@angular/platform-browser": "^14.2.6",
+    "@lithiumjs/angular": "^7.2.1",
+    "@lithiumjs/ngx-material-theming-templates": "0.8.0",
     "@types/chroma-js": "^2.1.3",
     "@types/node": "^16.11.7",
     "chroma-js": "^2.4.2",
     "fs-extra": "^10.0.1",
-    "ng-packagr": "^13.3.0",
+    "ng-packagr": "14.2.1",
     "rxjs": "^7.4.0",
     "sass": "^1.50.0",
     "tslib": "^2.1.0",
-    "typescript": "~4.6.3",
+    "typescript": "~4.8.4",
     "zone.js": "^0.11.4"
   },
-  "dependencies": {},
-  "ngPackage": {
-    "lib": {
-      "entryFile": "./src/api.ts"
-    },
-    "assets": [
-      "./src/index.scss",
-      "./src/styles/_template.scss",
-      "./src/styles/_theme.scss"
-    ]
-  }
+  "dependencies": {}
 }

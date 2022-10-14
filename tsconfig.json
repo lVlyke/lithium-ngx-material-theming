@@ -1,0 +1,4 @@
+// Dummy tsconfig file for VSCode
+{
+    "extends": "./tsconfig.lib.json"
+}

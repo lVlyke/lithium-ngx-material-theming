@@ -1,41 +1,13 @@
 {
-    // "extends": "./node_modules/ng-packagr/lib/ts/conf/tsconfig.ngc.json", TODO - Re-enable when fixed: https://github.com/ng-packagr/ng-packagr/issues/2156
-    "angularCompilerOptions": {
-        "compilationMode": "partial",
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true,
-        "strictTemplates": true,
-        "fullTemplateTypeCheck": true,
-        "enableResourceInlining": true
-    },
-    "buildOnSave": false,
-    "compileOnSave": false,
+    "extends": "./node_modules/ng-packagr/lib/ts/conf/tsconfig.ngc.json",
     "compilerOptions": {
-        "baseUrl": ".",
-        "target": "es2020",
-        "module": "es2020",
-        "moduleResolution": "node",
-        "declaration": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "skipLibCheck": true,
-        "emitDecoratorMetadata": false,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "lib": [
-            "dom",
-            "es2018"
-        ],
-
         // Overrides:
         "strict": true,
         "resolveJsonModule": true,
         "esModuleInterop": true
     },
-    "exclude": [
-        "node_modules",
-        "dist",
-        "**/*.shim.ts",
-        "**/*.spec.ts"
+    "files": [],
+    "include": [
+        "src/**/*.ts"
     ]
 }

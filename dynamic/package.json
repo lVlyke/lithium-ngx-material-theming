@@ -1,9 +1,4 @@
 {
-    "ngPackage": {
-        "lib": {
-            "entryFile": "../src/dynamic-api.ts"
-        }
-    },
     "peerDependencies": {
         "chroma-js": ">=1.x.x",
         "@lithiumjs/ngx-material-theming-templates": "*"
