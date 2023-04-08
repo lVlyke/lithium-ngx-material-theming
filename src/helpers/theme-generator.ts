@@ -42,30 +42,38 @@ export class ThemeGenerator {
      */
     public static createPalette(baseColor: string): ThemeCreator.Palette {
         const basePalette = {
-            50: this.paletteColor(baseColor, 50),
-            100: this.paletteColor(baseColor, 100),
-            200: this.paletteColor(baseColor, 200),
-            300: this.paletteColor(baseColor, 300),
-            400: this.paletteColor(baseColor, 400),
-            500: this.paletteColor(baseColor, 500),
-            600: this.paletteColor(baseColor, 600),
-            700: this.paletteColor(baseColor, 700),
-            800: this.paletteColor(baseColor, 800),
-            900: this.paletteColor(baseColor, 900)
-        };
+            "50": this.paletteColor(baseColor, "50"),
+            "100": this.paletteColor(baseColor, "100"),
+            "200": this.paletteColor(baseColor, "200"),
+            "300": this.paletteColor(baseColor, "300"),
+            "400": this.paletteColor(baseColor, "400"),
+            "500": this.paletteColor(baseColor, "500"),
+            "600": this.paletteColor(baseColor, "600"),
+            "700": this.paletteColor(baseColor, "700"),
+            "800": this.paletteColor(baseColor, "800"),
+            "900": this.paletteColor(baseColor, "900"),
+            "A100": this.paletteColor(baseColor, "A100"),
+            "A200": this.paletteColor(baseColor, "A200"),
+            "A400": this.paletteColor(baseColor, "A400"),
+            "A700": this.paletteColor(baseColor, "A700"),
+       };
 
         return Object.assign(basePalette, {
             contrast: {
-                50: this.contrastColor(basePalette[50]),
-                100: this.contrastColor(basePalette[100]),
-                200: this.contrastColor(basePalette[200]),
-                300: this.contrastColor(basePalette[300]),
-                400: this.contrastColor(basePalette[400]),
-                500: this.contrastColor(basePalette[500]),
-                600: this.contrastColor(basePalette[600]),
-                700: this.contrastColor(basePalette[700]),
-                800: this.contrastColor(basePalette[800]),
-                900: this.contrastColor(basePalette[900])
+                "50": this.contrastColor(basePalette["50"]),
+                "100": this.contrastColor(basePalette["100"]),
+                "200": this.contrastColor(basePalette["200"]),
+                "300": this.contrastColor(basePalette["300"]),
+                "400": this.contrastColor(basePalette["400"]),
+                "500": this.contrastColor(basePalette["500"]),
+                "600": this.contrastColor(basePalette["600"]),
+                "700": this.contrastColor(basePalette["700"]),
+                "800": this.contrastColor(basePalette["800"]),
+                "900": this.contrastColor(basePalette["900"]),
+                "A100": this.contrastColor(basePalette["A100"]),
+                "A200": this.contrastColor(basePalette["A200"]),
+                "A400": this.contrastColor(basePalette["A400"]),
+                "A700": this.contrastColor(basePalette["A700"]),
             }
         });
     }
@@ -79,13 +87,15 @@ export class ThemeGenerator {
      */
     public static paletteColor(baseColor: string, paletteOffset: PaletteOffset): string {
         const graduation = 0.3;
-        const offset = (paletteOffset < 500) ? (500 - paletteOffset) : (paletteOffset - 500);
+        const aColor = paletteOffset.startsWith("A");
+        const numericOffset = Number.parseInt(aColor ? paletteOffset.slice(1) : paletteOffset);
+        const offset = (numericOffset < 500) ? (500 - numericOffset) : (numericOffset - 500);
         const graduatedOffset = 0.2 + (offset * 0.01 * graduation);
 
         // Darken or lighten the base color based on the palette offset number
-        if (paletteOffset < 500) {
+        if (numericOffset < 500) {
             return chroma(baseColor).brighten(graduatedOffset ** 2).hex();
-        } else if (paletteOffset > 500) {
+        } else if (numericOffset > 500) {
             return chroma(baseColor).darken(graduatedOffset ** 2).hex();
         } else {
             return baseColor;

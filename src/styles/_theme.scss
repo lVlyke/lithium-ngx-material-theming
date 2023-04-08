@@ -33,6 +33,21 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
+/** @deprecated */
+@function define-legacy-theme(
+    $primary,
+    $accent,
+    $warn,
+    $is-dark: false
+) {
+    @return define-theme(
+        $primary: $primary,
+        $accent: $accent,
+        $warn: $warn,
+        $is-dark: $is-dark
+    );
+}
+
 @mixin create-theme($name, $definition, $nested-only: false) {
     $theme-container: "[li-theme='#{$name}']:not([active='false'])";
 
@@ -54,8 +69,41 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
+/** @deprecated */
+@mixin create-legacy-theme($name, $definition, $nested-only: false) {
+    $theme-container: "[li-theme='#{$name}']:not([active='false'])";
+
+    @if ($nested-only == false) {
+        #{$theme-container} {
+            @include mat.all-legacy-component-themes($definition);
+
+            @content;
+        }
+    }
+
+    /* Support nested theme container definitions */
+    [li-theme]:not([li-theme="#{$name}"]) {
+        #{$theme-container} {
+            @include mat.all-legacy-component-colors($definition);
+
+            @content;
+        }
+    }
+}
+
 @mixin create-nested-theme($name, $definition) {
     @include create-theme(
+        $name,
+        $definition,
+        $nested-only: true
+    ) {
+        @content;
+    }
+}
+
+/** @deprecated */
+@mixin create-legacy-nested-theme($name, $definition) {
+    @include create-legacy-theme(
         $name,
         $definition,
         $nested-only: true
@@ -81,8 +129,39 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
+/** @deprecated */
+@mixin declare-legacy-theme(
+    $name,
+    $primary,
+    $accent,
+    $warn,
+    $is-dark: false
+) {
+    @include create-legacy-theme($name, define-legacy-theme(
+        $primary: $primary,
+        $accent: $accent,
+        $warn: $warn,
+        $is-dark: $is-dark
+    )) {
+        @content;
+    }
+}
+
 @mixin declare-template-theme($is-dark: false) {
     @include declare-theme(
+        $name: template.$template-theme-name,
+        $primary: template.$template-primary-palette,
+        $accent: template.$template-accent-palette,
+        $warn: template.$template-warn-palette,
+        $is-dark: $is-dark
+    ) {
+        @content;
+    }
+}
+
+/** @deprecated */
+@mixin declare-legacy-template-theme($is-dark: false) {
+    @include declare-legacy-theme(
         $name: template.$template-theme-name,
         $primary: template.$template-primary-palette,
         $accent: template.$template-accent-palette,

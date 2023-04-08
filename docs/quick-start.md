@@ -36,7 +36,8 @@ If you aren't already using custom Angular Material theming, add the following t
 ```scss
 @use "@angular/material" as mat;
 
-// Only include mat.core() once in your app
+// Only include these once in your app:
+@include mat.all-component-typographies();
 @include mat.core();
 ```
 

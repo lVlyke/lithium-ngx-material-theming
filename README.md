@@ -17,6 +17,10 @@ Dynamic and customizable Angular Material theming made easy. Powered by [@lithiu
 * (Coming Soon) View the full API documentation.
 * Take a look at the [example app](https://github.com/lVlyke/lithium-ngx-material-theming-example) and [live demo](https://lvlyke.github.io/lithium-ngx-material-theming-example/).
 
+## Angular 15 Material MDC Update
+
+v15 of Angular Material introduces MDC-based components, with the old pre-v15 components being marked as "legacy". ngx-material-theming matches this behavior and exposes theming support for MDC-based components by default, with associated "legacy" mixins for pre-v15 components. If you are using legacy Angular Material components in your project, make sure to update your project to use the "legacy" versions of the ngx-material-theming mixins.
+
 ## Other information
 
 * [@lithiumjs/angular](https://github.com/lVlyke/lithium-angular)
