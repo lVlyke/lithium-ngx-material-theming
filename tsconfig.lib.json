@@ -4,7 +4,8 @@
         // Overrides:
         "strict": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "useDefineForClassFields": false
     },
     "files": [],
     "include": [
