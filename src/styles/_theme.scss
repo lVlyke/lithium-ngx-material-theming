@@ -2,9 +2,6 @@
 @use "template" as template;
 @forward "template";
 
-/** @deprecated */
-@import "./template";
-
 /* Disable duplication warnings caused by nested theming support. */
 mat.$theme-ignore-duplication-warnings: true;
 
@@ -33,21 +30,6 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-/** @deprecated */
-@function define-legacy-theme(
-    $primary,
-    $accent,
-    $warn,
-    $is-dark: false
-) {
-    @return define-theme(
-        $primary: $primary,
-        $accent: $accent,
-        $warn: $warn,
-        $is-dark: $is-dark
-    );
-}
-
 @mixin create-theme($name, $definition, $nested-only: false) {
     $theme-container: "[li-theme='#{$name}']:not([active='false'])";
 
@@ -69,41 +51,8 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-/** @deprecated */
-@mixin create-legacy-theme($name, $definition, $nested-only: false) {
-    $theme-container: "[li-theme='#{$name}']:not([active='false'])";
-
-    @if ($nested-only == false) {
-        #{$theme-container} {
-            @include mat.all-legacy-component-themes($definition);
-
-            @content;
-        }
-    }
-
-    /* Support nested theme container definitions */
-    [li-theme]:not([li-theme="#{$name}"]) {
-        #{$theme-container} {
-            @include mat.all-legacy-component-colors($definition);
-
-            @content;
-        }
-    }
-}
-
 @mixin create-nested-theme($name, $definition) {
     @include create-theme(
-        $name,
-        $definition,
-        $nested-only: true
-    ) {
-        @content;
-    }
-}
-
-/** @deprecated */
-@mixin create-legacy-nested-theme($name, $definition) {
-    @include create-legacy-theme(
         $name,
         $definition,
         $nested-only: true
@@ -129,24 +78,6 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-/** @deprecated */
-@mixin declare-legacy-theme(
-    $name,
-    $primary,
-    $accent,
-    $warn,
-    $is-dark: false
-) {
-    @include create-legacy-theme($name, define-legacy-theme(
-        $primary: $primary,
-        $accent: $accent,
-        $warn: $warn,
-        $is-dark: $is-dark
-    )) {
-        @content;
-    }
-}
-
 @mixin declare-template-theme($is-dark: false) {
     @include declare-theme(
         $name: template.$template-theme-name,
@@ -159,64 +90,20 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-/** @deprecated */
-@mixin declare-legacy-template-theme($is-dark: false) {
-    @include declare-legacy-theme(
-        $name: template.$template-theme-name,
+/** 
+ * @description Includes base styles for the application that are not theme-dependent.
+*/
+@mixin all-static-component-dimensions() {
+    @include mat.all-component-typographies();
+    
+    // The following mixins include base theme styles that are only needed once per application. These
+    // theme styles do not depend on the color, typography, or density settings in your theme. However,
+    // these styles may differ depending on the theme's design system. Currently all themes use the
+    // Material 2 design system, but in the future it may be possible to create theme based on other
+    // design systems, such as Material 3.
+    @include mat.all-component-bases(define-theme(
         $primary: template.$template-primary-palette,
         $accent: template.$template-accent-palette,
-        $warn: template.$template-warn-palette,
-        $is-dark: $is-dark
-    ) {
-        @content;
-    }
-}
-
-/** @deprecated */
-@mixin app-declare-theme($theme-name) {
-    @warn "app-declare-theme is deprecated and replaced with the following syntax: @use '~@lithiumjs/ngx-material-theming' as mat-theming; mat-theming.declare-theme;";
-    $theme-container: "[li-theme='#{$theme-name}']:not([active='false'])";
-
-    #{$theme-container} {
-        @content;
-    }
-
-    /* Support nested theme container definitions */
-    [li-theme]:not([li-theme="#{$theme-name}"]) {
-        #{$theme-container} {
-            @content;
-        }
-    }
-}
-
-/** @deprecated */
-@mixin app-theme(
-    $theme-name,
-    $theme-primary,
-    $theme-accent,
-    $theme-warn,
-    $is-dark: false
-) {
-    @warn "app-declare-theme is deprecated and replaced with the following syntax: @use '~@lithiumjs/ngx-material-theming' as mat-theming; mat-theming.declare-theme;";
-    @include app-declare-theme($theme-name) {
-        @if $is-dark {
-            @include mat.all-component-themes(mat.define-dark-theme((
-                color: (
-                    primary: $theme-primary,
-                    accent: $theme-accent,
-                    warn: $theme-warn
-                )
-            )));
-        } @else {
-            @include mat.all-component-themes(mat.define-light-theme((
-                color: (
-                    primary: $theme-primary,
-                    accent: $theme-accent,
-                    warn: $theme-warn
-                )
-            )));
-        }
-
-        @content;
-    }
+        $warn: template.$template-warn-palette
+    ));
 }

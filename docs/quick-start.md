@@ -35,10 +35,11 @@ If you aren't already using custom Angular Material theming, add the following t
 
 ```scss
 @use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
 
 // Only include these once in your app:
-@include mat.all-component-typographies();
 @include mat.core();
+@include mat-theming.all-static-component-dimensions();
 ```
 
 ## Create your first theme
