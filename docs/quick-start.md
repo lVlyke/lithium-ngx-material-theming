@@ -1,5 +1,7 @@
 # Quick start guide
 
+> :grey_exclamation: **@lithiumjs/ngx-material-theming currently only supports Material 2-based themes.**
+
 ## Installation
 
 This project depends on [@lithiumjs/angular](https://github.com/lVlyke/lithium-angular). Install both with NPM or Yarn:
@@ -39,7 +41,7 @@ If you aren't already using custom Angular Material theming, add the following t
 
 // Only include these once in your app:
 @include mat.core();
-@include mat-theming.all-static-component-dimensions();
+@include mat-theming.m2-all-static-component-dimensions();
 ```
 
 ## Create your first theme
@@ -50,11 +52,11 @@ Now it's time to create your application's first theme. Create a new SCSS file c
 @use "@angular/material" as mat;
 @use "@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include mat-theming.delcare-theme(
+@include mat-theming.m2-declare-theme(
     $name: "default",
-    $primary: mat.define-palette(mat.$blue-palette),
-    $accent: mat.define-palette(mat.$pink-palette),
-    $warn: mat.define-palette(mat.$red-palette)
+    $primary: mat.m2-define-palette(mat.$blue-palette),
+    $accent: mat.m2-define-palette(mat.$pink-palette),
+    $warn: mat.m2-define-palette(mat.$red-palette)
 );
 ```
 
@@ -83,11 +85,11 @@ Now, let's add a second theme. Create a new SCSS file called ```dark-theme.scss`
 @use "@angular/material" as mat;
 @use "@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include mat-theming.delcare-theme(
+@include mat-theming.m2-declare-theme(
     $name: "dark",
-    $primary: mat.define-palette(mat.$green-palette),
-    $accent: mat.define-palette(mat.$blue-palette),
-    $warn: mat.define-palette(mat.$red-palette),
+    $primary: mat.m2-define-palette(mat.$green-palette),
+    $accent: mat.m2-define-palette(mat.$blue-palette),
+    $warn: mat.m2-define-palette(mat.$red-palette),
     $is-dark: true
 );
 ```
@@ -200,11 +202,11 @@ You can define extensions to your Material themes directly in the theme definiti
 @use "@angular/material" as mat;
 @use "@lithiumjs/ngx-material-theming" as mat-theming;
 
-@include mat-theming.delcare-theme(
+@include mat-theming.m2-declare-theme(
     $name: "default",
-    $primary: mat.define-palette(mat.$blue-palette),
-    $accent: mat.define-palette(mat.$pink-palette),
-    $warn: mat.define-palette(mat.$red-palette)
+    $primary: mat.m2-define-palette(mat.$blue-palette),
+    $accent: mat.m2-define-palette(mat.$pink-palette),
+    $warn: mat.m2-define-palette(mat.$red-palette)
 );
 ```
 
@@ -214,11 +216,11 @@ To extend this theme, we can simply declare our theme extensions directly inside
 @use "@angular/material" as mat;
 @use "@lithiumjs/ngx-material-theming" as mat-theming;
 
-$default-primary: mat.define-palette(mat.$blue-palette);
-$default-accent: mat.define-palette(mat.$pink-palette);
-$default-warn: mat.define-palette(mat.$red-palette);
+$default-primary: mat.m2-define-palette(mat.$blue-palette);
+$default-accent: mat.m2-define-palette(mat.$pink-palette);
+$default-warn: mat.m2-define-palette(mat.$red-palette);
 
-@include mat-theming.declare-theme(
+@include mat-theming.m2-declare-theme(
     $name: "default",
     $primary: $default-primary,
     $accent: $default-accent,
@@ -227,7 +229,7 @@ $default-warn: mat.define-palette(mat.$red-palette);
     // We can list all of our theme overrides below:
 
     foo-component {
-        background-color: mat.get-color-from-palette($default-primary);
+        background-color: mat.m2-get-color-from-palette($default-primary);
     }
 }
 ```
@@ -237,13 +239,13 @@ Though it isn't required, it is recommended that you split up your theme extensi
 ```scss
 @use "@angular/material" as mat;
 @use "@lithiumjs/ngx-material-theming" as mat-theming;
-@use "theme_exts/foo-component" foo-ext; // This contains a mixin with our custom foo-component theme overrides
+@use "theme_exts/foo-component" as foo-ext; // This contains a mixin with our custom foo-component theme overrides
 
-$default-primary: mat.define-palette(mat.$blue-palette);
-$default-accent: mat.define-palette(mat.$pink-palette);
-$default-warn: mat.define-palette(mat.$red-palette);
+$default-primary: mat.m2-define-palette(mat.$blue-palette);
+$default-accent: mat.m2-define-palette(mat.$pink-palette);
+$default-warn: mat.m2-define-palette(mat.$red-palette);
 
-@include mat-theming.declare-theme(
+@include mat-theming.m2-declare-theme(
     $name: "default",
     $primary: $default-primary,
     $accent: $default-accent,
@@ -272,13 +274,13 @@ First, create a new file called ```theme-template.scss``` with the following con
 @use "~@lithiumjs/ngx-material-theming" as mat-theming;
 @use "theme_exts/foo-component" foo-ext;
 
-@include mat-theming.declare-template-theme() {
+@include mat-theming.m2-declare-template-theme() {
     // All theme overrides are declared as normal using the template theme palettes:
 
     @include foo-ext.declare(
-        $primary: mat-theming.$template-primary-palette,
-        $accent: mat-theming.$template-accent-palette,
-        $warn: mat-theming.$template-warn-palette
+        $primary: mat-theming.$m2-template-primary-palette,
+        $accent: mat-theming.$m2-template-accent-palette,
+        $warn: mat-theming.$m2-template-warn-palette
     );
 }
 ```

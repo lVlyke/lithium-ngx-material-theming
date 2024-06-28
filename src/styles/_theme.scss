@@ -5,31 +5,6 @@
 /* Disable duplication warnings caused by nested theming support. */
 mat.$theme-ignore-duplication-warnings: true;
 
-@function define-theme(
-    $primary,
-    $accent,
-    $warn,
-    $is-dark: false
-) {
-    @if $is-dark {
-        @return mat.define-dark-theme((
-            color: (
-                primary: $primary,
-                accent: $accent,
-                warn: $warn
-            )
-        ));
-    } @else {
-        @return mat.define-light-theme((
-            color: (
-                primary: $primary,
-                accent: $accent,
-                warn: $warn
-            )
-        ));
-    }
-}
-
 @mixin create-theme($name, $definition, $nested-only: false) {
     $theme-container: "[li-theme='#{$name}']:not([active='false'])";
 
@@ -61,14 +36,39 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-@mixin declare-theme(
+@function m2-define-theme(
+    $primary,
+    $accent,
+    $warn,
+    $is-dark: false
+) {
+    @if $is-dark {
+        @return mat.m2-define-dark-theme((
+            color: (
+                primary: $primary,
+                accent: $accent,
+                warn: $warn
+            )
+        ));
+    } @else {
+        @return mat.m2-define-light-theme((
+            color: (
+                primary: $primary,
+                accent: $accent,
+                warn: $warn
+            )
+        ));
+    }
+}
+
+@mixin m2-declare-theme(
     $name,
     $primary,
     $accent,
     $warn,
     $is-dark: false
 ) {
-    @include create-theme($name, define-theme(
+    @include create-theme($name, m2-define-theme(
         $primary: $primary,
         $accent: $accent,
         $warn: $warn,
@@ -78,12 +78,12 @@ mat.$theme-ignore-duplication-warnings: true;
     }
 }
 
-@mixin declare-template-theme($is-dark: false) {
-    @include declare-theme(
+@mixin m2-declare-template-theme($is-dark: false) {
+    @include m2-declare-theme(
         $name: template.$template-theme-name,
-        $primary: template.$template-primary-palette,
-        $accent: template.$template-accent-palette,
-        $warn: template.$template-warn-palette,
+        $primary: template.$m2-template-primary-palette,
+        $accent: template.$m2-template-accent-palette,
+        $warn: template.$m2-template-warn-palette,
         $is-dark: $is-dark
     ) {
         @content;
@@ -93,7 +93,7 @@ mat.$theme-ignore-duplication-warnings: true;
 /** 
  * @description Includes base styles for the application that are not theme-dependent.
 */
-@mixin all-static-component-dimensions() {
+@mixin m2-all-static-component-dimensions() {
     @include mat.all-component-typographies();
     
     // The following mixins include base theme styles that are only needed once per application. These
@@ -101,9 +101,9 @@ mat.$theme-ignore-duplication-warnings: true;
     // these styles may differ depending on the theme's design system. Currently all themes use the
     // Material 2 design system, but in the future it may be possible to create theme based on other
     // design systems, such as Material 3.
-    @include mat.all-component-bases(define-theme(
-        $primary: template.$template-primary-palette,
-        $accent: template.$template-accent-palette,
-        $warn: template.$template-warn-palette
+    @include mat.all-component-bases(m2-define-theme(
+        $primary: template.$m2-template-primary-palette,
+        $accent: template.$m2-template-accent-palette,
+        $warn: template.$m2-template-warn-palette
     ));
 }

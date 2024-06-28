@@ -35,7 +35,7 @@ $template-theme-primary: (
     )
 );
 
-$template-primary-palette: mat.define-palette($template-theme-primary);
+$m2-template-primary-palette: mat.m2-define-palette($template-theme-primary);
 
 $template-theme-accent: (
     50: #b09905,
@@ -70,7 +70,7 @@ $template-theme-accent: (
     )
 );
 
-$template-accent-palette: mat.define-palette($template-theme-accent);
+$m2-template-accent-palette: mat.m2-define-palette($template-theme-accent);
 
 $template-theme-warn: (
     50: #c09905,
@@ -105,4 +105,4 @@ $template-theme-warn: (
     )
 );
 
-$template-warn-palette: mat.define-palette($template-theme-warn);
+$m2-template-warn-palette: mat.m2-define-palette($template-theme-warn);

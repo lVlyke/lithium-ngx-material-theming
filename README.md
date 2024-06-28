@@ -14,12 +14,13 @@ Dynamic and customizable Angular Material theming made easy. Powered by [@lithiu
 ## Getting started
 
 * Check out the [quick start guide](/docs/quick-start.md).
-* (Coming Soon) View the full API documentation.
 * Take a look at the [example app](https://github.com/lVlyke/lithium-ngx-material-theming-example) and [live demo](https://lvlyke.github.io/lithium-ngx-material-theming-example/).
 
-## Angular 15 Material MDC Update
+## Notice - Angular 18 Material 3 Update
 
-v15 of Angular Material introduces MDC-based components, with the old pre-v15 components being marked as "legacy". ngx-material-theming matches this behavior and exposes theming support for MDC-based components by default, with associated "legacy" mixins for pre-v15 components. If you are using legacy Angular Material components in your project, make sure to update your project to use the "legacy" versions of the ngx-material-theming mixins.
+v18 of Angular Material introduces official support for Material 3-based themes, with the old Material 2-based theme utilities being prefixed with `m2`. ngx-material-theming matches this behavior by prefixing all Material 2 theming utilities with `m2`.
+
+ngx-material-theming does not currently support Material 3 theming.
 
 ## Other information
 
