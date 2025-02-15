@@ -9,6 +9,7 @@ export const DEFAULT_THEME_NAME = "default";
 const STATE_PROVIDER = createDirectiveState(forwardRef(() => ThemeContainer));
 
 @Directive({
+    standalone: false,
     selector: "li-theme-container",
     providers: [STATE_PROVIDER],
     host: {
