@@ -16,23 +16,6 @@ npm install @lithiumjs/angular @lithiumjs/ngx-material-theming
 npm install chroma-js
 ```
 
-After installation is complete, import the project's module into your application:
-
-```ts
-import { NgxMaterialThemingModule } from "@lithiumjs/ngx-material-theming";
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserAnimationsModule,
-    MatButtonModule,
-    NgxMaterialThemingModule // <---- Import this module into your application.
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
-```
-
 If you aren't already using custom Angular Material theming, add the following to your root SCSS file (usually ```styles.scss```):
 
 ```scss
@@ -64,9 +47,24 @@ After creating this file, be sure to import it in your root SCSS file after the 
 
 ## Using theme containers
 
-After creating and importing your new theme, you now need to add at least one `ThemeContainer` to your application in order to use it.
+After creating and importing your new theme, you now need to add at least one `ThemeContainer` to your application in order to use it. First, import the `ThemeContainer` directive in the component you want to theme:
 
-Add a `<li-theme-container>` to your `AppComponent`'s template (or whichever component you want the theme to apply to):
+```ts
+import { ThemeContainer } from "@lithiumjs/ngx-material-theming";
+
+@Component({
+  ...
+  providers: [
+    ThemeContainer,
+    ...
+  ]
+})
+export class ExampleComponent {
+    ...
+}
+```
+
+Next, use `<li-theme-container>` in the component's template:
 
 ```html
 <!-- theme="default" is optional as it is the default value -->
