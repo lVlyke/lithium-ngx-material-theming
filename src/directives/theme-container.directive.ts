@@ -18,9 +18,9 @@ const STATE_PROVIDER = createDirectiveState(forwardRef(() => ThemeContainer));
 })
 export class ThemeContainer {
 
-    public readonly theme$ = this.stateRef.get("theme");
-    public readonly active$ = this.stateRef.get("active");
-    public readonly manageOverlay$ = this.stateRef.get("manageOverlay");
+    public readonly theme$: Observable<string>;
+    public readonly active$: Observable<boolean>;
+    public readonly manageOverlay$: Observable<boolean>;
 
     @OnInit()
     private readonly onInit$!: Observable<void>;
@@ -43,6 +43,10 @@ export class ThemeContainer {
         @SkipSelf() @Optional() parentThemeContainer: ThemeContainer,
         @Inject(stateTokenFor(STATE_PROVIDER)) private readonly stateRef: DirectiveStateRef<ThemeContainer>
     ) {
+        this.theme$ = this.stateRef.get("theme");
+        this.active$ = this.stateRef.get("active");
+        this.manageOverlay$ = this.stateRef.get("manageOverlay");
+
         let wasManagingOverlay = false;
 
         AutoPush.enable(this, cdRef);
